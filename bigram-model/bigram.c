@@ -23,7 +23,7 @@ void min_max(const char words[][MAX_STRING_LENGTH], int n_words, int *min_ptr, i
 }
 
 int main(int argc, char *argv[]) {
-  char *file_name =  "names.txt";
+  char *file_name = "names.txt";
   if (argc == 2){
     file_name = argv[1];
   }
@@ -45,6 +45,7 @@ int main(int argc, char *argv[]) {
     }
     i++;
   }
+
   fclose(file);
   int min, max;
   min_max(strings, n_words, &min, &max);
