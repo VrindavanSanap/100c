@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <strings.h>
 #include "dict.h"
+#include "stoi.h"
+#include "itos.h"
 #include "line_count.h"
 #define MAX_STRING_LENGTH 100
 
@@ -30,10 +32,12 @@ int main() {
         perror("Error opening file");
         return 1;
     }
+
     int n_words = line_count(file);
     printf("n-words= %d \n", n_words);
     char strings[n_words][MAX_STRING_LENGTH];
     int i = 0;
+
     while (fgets(strings[i], MAX_STRING_LENGTH, file)) {
         int length = strlen(strings[i]);
         if (length > 0 && strings[i][length - 1] == '\n') {
