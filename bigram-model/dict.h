@@ -1,18 +1,16 @@
-//Dict with string keys and int values
+
 
 #ifndef DICTIONARY_H
 #define DICTIONARY_H
 
 #define MAX_DICTIONARY_SIZE 100
 
-typedef struct
-{
+typedef struct{
     char key[50];
     int value;
 } KeyValuePair;
 
-typedef struct
-{
+typedef struct{
     KeyValuePair pairs[MAX_DICTIONARY_SIZE];
     int size;
 } Dictionary;

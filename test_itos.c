@@ -1,18 +1,9 @@
-
-//
-//  boilerplate.c
-//  bp
-//
-//  Created by Vrindavan sanap on 7/13/23.
-//  Copyright © 2023 Vrindavan. All rights reserved.
-//
-
-//  Code will be used as boiler plate
-
+// another_file.c
+#include "itos.h"
 #include <stdio.h>
-#
-int main(int argc, char *argv[])
-{
 
+int main()
+{
+    printf("%c\n", itos[4]); // Access itos array
     return 0;
 }

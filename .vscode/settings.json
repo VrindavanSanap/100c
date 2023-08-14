@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "dict.h": "c"
+        "dict.h": "c",
+        "itos.h": "c"
     }
 }

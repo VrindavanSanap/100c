@@ -9,11 +9,12 @@ int line_count(FILE *file){
         return 1;
     }
 
-    while ((ch = fgetc(file)) != EOF) {
+    while ((ch = fgetc(file)) != EOF){
         if (ch == '\n') {
             line_count++;
         }
     }
+
     fseek(file, start_pos, SEEK_SET);
     return line_count;
 }

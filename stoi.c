@@ -11,11 +11,11 @@ Dictionary stoi()
     {
         alpha_i[0] = alpha;
         alpha_i[1] = '\0';
-        insert_key_value_pair(&dict, alpha_i, ++i);
+        insert_key_value_pair(&dict, alpha_i,i++);
     }
     char point = '.';
     alpha_i[0] = point;
     alpha_i[1] = '\0';
-    insert_key_value_pair(&dict, alpha_i, ++i);
+    insert_key_value_pair(&dict, alpha_i, i++);
     return dict;
 }

@@ -1,6 +1,6 @@
 #ifndef ITOS_H
 #define ITOS_H
 
-char *itos();
+extern char itos[27];
 
 #endif
