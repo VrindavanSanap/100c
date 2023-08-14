@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+cat cbp.c | pbcopy
