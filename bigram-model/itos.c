@@ -1,1 +1,1 @@
-char itos[27] = "abcdefghijklmnopqrstuvwxyz.";
+char itos[27] = ".abcdefghijklmnopqrstuvwxyz";

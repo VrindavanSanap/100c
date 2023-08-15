@@ -1,4 +1,0 @@
-#!/bin/zsh
-
-clang -o bigram bigram.c line_count.c
-./bigram

@@ -3,6 +3,8 @@
 #include <strings.h>
 #include <limits.h>
 #include "line_count.h"
+#include "stoi.h"
+#include "dict.h"
 #define MAX_STRING_LENGTH 100
 
 void min_max(const char words[][MAX_STRING_LENGTH], int n_words, int *min_ptr, int *max_ptr){
@@ -17,7 +19,6 @@ void min_max(const char words[][MAX_STRING_LENGTH], int n_words, int *min_ptr, i
         }
         if (min > length){
             min = length;
-            printf("%d %s \n", min, words[i]);
         }
     }
     *min_ptr = min;
@@ -53,6 +54,7 @@ void find_min_max_lengths(char strings[][MAX_STRING_LENGTH], int n_words, int *m
 }
 
 int main(int argc, char *argv[]) {
+    
     char *file_name = "names.txt";
     if (argc == 2){
         file_name = argv[1];
@@ -71,10 +73,29 @@ int main(int argc, char *argv[]) {
     int min, max;
     min_max(words, n_words, &min, &max);
     printf("min_l = %d \nmax_l = %d \n", min, max);
+    Dictionary dict= stoi();
     char word[MAX_STRING_LENGTH];
+    int N[27][27] = {0};
+
     for (int i = 0; i < n_words; i++){
-        strcpy(word, words[i]);
-        printf("%d %s \n",i ,word);
+        char chs[strlen(words[i]) + 3];
+        chs[0] = '.';
+        strcpy(chs + 1, words[i]);
+        chs[strlen(words[i]) + 1] = '.';
+        chs[strlen(words[i]) + 2] = '\0';
+ 
+        for (int j = 0; j < strlen(chs) - 1; j++){
+            char ch1[2]; // String to hold ch1
+            char ch2[2]; // String to hold ch2
+            ch1[0] = chs[j];
+            ch1[1] = '\0';
+            ch2[0] = chs[j + 1];
+            ch2[1] = '\0';
+            
+            int ix1 = get_value_by_key(&dict, ch1);
+            int ix2 = get_value_by_key(&dict, ch2);
+            N[ix1][ix2]++;
+        }
     }
     return 0;
 }

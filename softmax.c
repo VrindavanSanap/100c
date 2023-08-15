@@ -29,18 +29,21 @@ int main() {
     float floats [] = {1.0, 2.0,3,4,5};
 
     // Initialize floats array with random values
+    printf("softmax.c \n");
+    printf("[");
     for (int i = 0; i < size; i++) {
-        printf("%f\n", floats[i]);
+        printf("%f,", floats[i]);
     }
+    printf("] \n");
 
     // Apply softmax to the initialized floats array
     softmax(floats, size);
-
     // Print the softmax-transformed values
-    printf("After softmax:\n");
+    printf("[");
     for (int i = 0; i < size; i++) {
-        printf("%f\n", floats[i]);
+        printf("%f,", floats[i]);
     }
+    printf("] \n");
 
     return 0;
 }

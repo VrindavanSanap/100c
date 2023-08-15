@@ -27,7 +27,7 @@ int main() {
     // Print the result
     printf("Resulting vector xout:\n");
     for (int i = 0; i < d; i++) {
-        printf("%.2f ", xout[i]);
+        printf("%.2f \n", xout[i]);
     }
     printf("\n");
 

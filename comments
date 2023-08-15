@@ -1,0 +1,11 @@
+//
+//  arg_max.c 
+//  100c 
+//
+//  Created by Vrindavan sanap on 7/13/23.
+//
+
+
+// Code defines a function argmax that returns the index of max value in a float array
+
+

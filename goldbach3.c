@@ -26,16 +26,7 @@ int nth_prime(int n) {
 }
 
 void goldbach(int n){
-//     for (int i = 1; i <= n - 2; ++i) {
-//        for (int j = i + 1; j <= n - 1; ++j) {
- //           for (int k = j + 1; k <= n; ++k) {
-  //               if (i + j + k == n) {
-   //                 printf("%d + %d + %d = %d\n", i, j, k, n);
-    //            }
-     //       }
-      //  }
-    // }
-    int i = 0;
+   int i = 0;
     int j = 0;
     int k = 0;
     int p = 0;
