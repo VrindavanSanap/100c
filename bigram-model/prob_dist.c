@@ -10,17 +10,13 @@
 //  Code will be used as boiler plate  
 
 #include <stdio.h>
+#include "print_arr.h"
+#include "sum_arr.h"
 
 void prob_dist(float* x, int size){
-  float sum = 0;
+  float sum = sum_float_l1(x, size);
   for(int i = 0; i< size; i++){
-    sum += x[i];
+    x[i] /= sum;
   } 
-  printf(sum);
 }
-int main(int argc, char *argv[]) {
-  
-  prob_dist(x);
-}
-
 
