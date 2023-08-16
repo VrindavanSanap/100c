@@ -5,6 +5,7 @@
 #include "line_count.h"
 #include "stoi.h"
 #include "dict.h"
+#include "plot_N.h"
 #define MAX_STRING_LENGTH 100
 
 void min_max(const char words[][MAX_STRING_LENGTH], int n_words, int *min_ptr, int *max_ptr){
@@ -35,24 +36,6 @@ void read_strings(FILE *file, char strings[][MAX_STRING_LENGTH], int n_words){
         i++;
     }
 }
-void find_min_max_lengths(char strings[][MAX_STRING_LENGTH], int n_words, int *min, int *max){
-    *min = INT_MAX;
-    *max = 0;
-
-    for (int i = 0; i < n_words; i++)
-    {
-        int length = strlen(strings[i]);
-        if (length < *min)
-        {
-            *min = length;
-        }
-        if (length > *max)
-        {
-            *max = length;
-        }
-    }
-}
-
 int main(int argc, char *argv[]) {
     
     char *file_name = "names.txt";
@@ -97,6 +80,7 @@ int main(int argc, char *argv[]) {
             N[ix1][ix2]++;
         }
     }
+    plot_N(N);
     return 0;
 }
 

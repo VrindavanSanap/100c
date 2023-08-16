@@ -7,8 +7,7 @@ Dictionary stoi()
     init_dict(&dict);
     int i = 1;
     char alpha_i[2];
-    for (char alpha = 'a'; alpha <= 'z'; alpha++)
-    {
+    for (char alpha = 'a'; alpha <= 'z'; alpha++){
         alpha_i[0] = alpha;
         alpha_i[1] = '\0';
         insert_key_value_pair(&dict, alpha_i,i++);
@@ -16,6 +15,6 @@ Dictionary stoi()
     char point = '.';
     alpha_i[0] = point;
     alpha_i[1] = '\0';
-    insert_key_value_pair(&dict, alpha_i,0) 
+    insert_key_value_pair(&dict, alpha_i,0);
     return dict;
 }
