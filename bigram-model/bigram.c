@@ -51,7 +51,7 @@ void read_strings(FILE *file, char strings[][MAX_STRING_LENGTH], int n_words)
 int main(int argc, char *argv[])
 {
     srand(time(NULL));
-    char *file_name = "names.txt";
+    char *file_name = "./names.txt";
     if (argc == 2)
     {
         file_name = argv[1];
@@ -101,7 +101,6 @@ int main(int argc, char *argv[])
             N[ix1][ix2]++;
         }
     }
-    // plot_N(N);
 
     // Calculate probability matrix
     float p[27][27];
@@ -113,7 +112,6 @@ int main(int argc, char *argv[])
         }
         prob_dist(p[i], 27);
     }
-    // plot_p(p);
 
     // Sample from the model
     for (int i = 0; i < 10; i++)
