@@ -26,8 +26,9 @@ void collatz(int n){
 }
 
 int main(int argc, char *argv[]){
-  if (argc != 2){
+  if (argc < 3){
     printf("usage: collatz n");
+    return 0;
   }
 
   int n = atoi(argv[1]);
