@@ -1,5 +1,7 @@
+#include <iomanip>
 #include <iostream>
 #include <random>
+
 using namespace std;
 
 char take_user_input() {
@@ -19,25 +21,53 @@ class Board {
     memset(board, 0, sizeof(board));  // Initialize all board cells to 0
     place_random_tiles();
   }
-  void make_move_left() {
-    int end_ptr;
-    int last_num = 0;
+  bool gaps_present() {
     for (int i = 0; i < rows; i++) {
-      // for each row 
-      end_ptr = 3;
-      for (int j = cols - 1; j >= 0; j--) {  // Corrected loop condition
-        if (board[i][j] == 0) {
-        } else if (end_ptr == j) {
-          end_ptr--;
-        } else {
-          board[i][end_ptr--] = board[i][j];
-          board[i][j] = 0;
+      for (int j = 0; j < cols - 1; j++) {
+        if (board[i][j + 1] == 0 && board[i][j] != 0) {
+          return true;
         }
       }
-
     }
-
   }
+  bool shift_left() {
+    int end_ptr;
+    for (int i = 0; i < rows; i++) {
+      // For each row
+      end_ptr = 3;
+      for (int j = cols - 1; j >= 0; j--) {
+        if (board[i][j] != 0) {
+          if (end_ptr != j) {
+            board[i][end_ptr--] = board[i][j];
+            board[i][j] = 0;
+          } else {
+            end_ptr--;
+          }
+        }
+      }
+    }
+  }
+  bool merge() {
+    for (int i = 0; i < rows; i++) {
+      for (int j = cols - 1; j > 0; j--) {
+        if (board[i][j] == board[i][j - 1] && board[i][j] == board[i][j - 1]!=0) {
+          board[i][j] = 2 * board[i][j - 1];
+          board[i][j - 1] = 0;
+          shift_left();
+        }
+      }
+    }
+  }
+
+  void make_move_left() {
+
+      shift_left();
+      merge();
+
+
+    place_random_tiles(1);
+  }
+
   void make_move_right() {
     horizontal_flip();
     make_move_left();
@@ -72,13 +102,13 @@ class Board {
         break;
     }
   }
-  void place_random_tiles() {
+  void place_random_tiles(int n_tiles = 2) {
     random_device rd;
     mt19937 gen(rd());
     uniform_int_distribution<> dis_coor(0, 3);
     uniform_int_distribution<> dis_prob(0, 9);
 
-    for (int i = 0; i < 2; ++i) {
+    for (int i = 0; i < n_tiles; ++i) {
       int row, col;
       do {
         row = dis_coor(gen);
@@ -92,7 +122,7 @@ class Board {
     cout << "Board:\n";
     for (int i = 0; i < rows; i++) {
       for (int j = 0; j < cols; j++) {
-        cout << " " << board[i][j] << "|";
+        cout << setw(6) << board[i][j] << "|";
       }
       cout << endl;
     }
