@@ -1,0 +1,5 @@
+Dataset properties
+
+Total questions - 13679
+Test - 1000
+Validation - 1000
