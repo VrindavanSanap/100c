@@ -37,6 +37,7 @@ int main() {
         printf("Element %d = %f \n", i, floats[i]);
     }
     int max_i = argmax(floats, size);
+
     printf("max_i = %d", max_i);
     return 0;
 }
