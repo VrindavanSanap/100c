@@ -7,11 +7,16 @@ int compare_strings(const void *a , const void *b){
   const char*str2 = *(const char **)b;
   return strcmp(str1, str2);
 }
-int main() {
+int main(int argc, char *argv[]){
+  if (argc != 2){
+    printf("Ussage ./lexo_sort <flename>");
+    return -1;
+  }
+
   char word[50];
   char *words[120];
-
-  FILE *file = fopen("unsorted.txt", "r");
+  char *file_name = argv[1];
+  FILE *file = fopen(file_name, "r");
   if (file == NULL) {
     perror("Error opening file");
     return -1;
@@ -28,7 +33,12 @@ int main() {
 
   qsort(words, n_words, sizeof(char *), compare_strings);
   fclose(file);
-  file = fopen("sorted.txt", "w");
+  char output_file_name[60];
+  char prepend[] = "sorted_";
+  strcpy(output_file_name, prepend);
+  strcat(output_file_name, file_name);
+
+  file = fopen(output_file_name, "w");
   if (file == NULL) {
       perror("Error opening file");
       return -1;
