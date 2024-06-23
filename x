@@ -1,1 +1,0 @@
-Blaze Your Glory!!
