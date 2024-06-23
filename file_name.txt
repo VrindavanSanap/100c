@@ -1,1 +1,0 @@
-Data read from the file: Program to read input from a file 

@@ -24,8 +24,6 @@ int main(void) {
   strcpy(banger.author, "Beff Jezoz");
   strcpy(banger.tweet, "A C C L L E R A T E");
   banger.likes=100;
-  
-  
   printTweet(banger);
   return 0;
 }
