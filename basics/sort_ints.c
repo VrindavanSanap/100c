@@ -16,14 +16,7 @@
 int compare_ints(const void *p, const void *q) {
     int x = *(const int *)p;
     int y = *(const int *)q;
-
-    if (x < y)
-        return -1;  
-    else if (x > y)
-        return 1;  
-
-    return 0;
-    return (x > y) - (x < y);
+   return (x > y) - (x < y);
 }
 
 void sort_ints(int *a, size_t n) {
