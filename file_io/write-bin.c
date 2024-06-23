@@ -5,7 +5,8 @@ int main(void)
     FILE *fp;
     unsigned char bytes[6] = {5, 37, 0, 88, 255, 12};
 
-    fp = fopen("output.bin", "wb"); // wb mode for "write binary"!
+    fp = fopen("output.bin", "wb"); 
+    // wb mode for "write binary"!
 
     // In the call to fwrite, the arguments are:
     //
