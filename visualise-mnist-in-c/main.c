@@ -64,14 +64,14 @@ int get_label(FILE* file, int index) {
 }
 
 char* train_image_file_name =
-    "./23278f029ff68f1e993776e500ce06b9";
+    "./train-images-idx3-ubyte.gz";
 char* train_label_file_name =
-    "./d8b415e67abd11881e156b8f111d3300";
+    "./train-labels-idx1-ubyte.gz";
 // Smaller
 char* test_image_file_name =
-    "./b0cdab8e37ae7c1c5560ee858afaac1d";
+    "./train-labels-idx1-ubyte.gz";
 char* test_label_file_name =
-    "./d4fdde61aca9f72d5fe2315410bb46a5";
+    "./t10k-labels-idx1-ubyte.gz";
 
 FILE* train_image_file;
 FILE* train_label_file;
