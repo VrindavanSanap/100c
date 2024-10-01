@@ -63,16 +63,11 @@ int get_label(FILE* file, int index) {
       return (int)pixel;
 }
 
-char* train_image_file_name =
-    "/Users/vrindavan/Datasets/mnist_for_c/23278f029ff68f1e993776e500ce06b9";
-char* train_label_file_name =
-    "/Users/vrindavan/Datasets/mnist_for_c/d8b415e67abd11881e156b8f111d3300";
+char* train_image_file_name ="./train-images-idx3-ubyte";
+char* train_label_file_name ="./train-labels-idx1-ubyte";
 // Smaller
-char* test_image_file_name =
-    "/Users/vrindavan/Datasets/mnist_for_c/b0cdab8e37ae7c1c5560ee858afaac1d";
-char* test_label_file_name =
-    "/Users/vrindavan/Datasets/mnist_for_c/d4fdde61aca9f72d5fe2315410bb46a5";
-
+char* test_image_file_name ="./t10k-images-idx3-ubyte";
+char* test_label_file_name ="./t10k-labels-idx1-ubyte";
 FILE* train_image_file;
 FILE* train_label_file;
 FILE* test_image_file;
