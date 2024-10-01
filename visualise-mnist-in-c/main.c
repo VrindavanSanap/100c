@@ -63,11 +63,16 @@ int get_label(FILE* file, int index) {
       return (int)pixel;
 }
 
-char* train_image_file_name ="./train-images-idx3-ubyte";
-char* train_label_file_name ="./train-labels-idx1-ubyte";
+char* train_image_file_name =
+    "train-images-idx3-ubyte";
+char* train_label_file_name =
+    "train-labels-idx1-ubyte";
 // Smaller
-char* test_image_file_name ="./t10k-images-idx3-ubyte";
-char* test_label_file_name ="./t10k-labels-idx1-ubyte";
+char* test_image_file_name =
+    "t10k-images-idx3-ubyte";
+char* test_label_file_name =
+    "t10k-labels-idx1-ubyte";
+
 FILE* train_image_file;
 FILE* train_label_file;
 FILE* test_image_file;
