@@ -8,7 +8,10 @@
 // Callback function to write the response data
 size_t write_callback(void *ptr, size_t size, size_t nmemb, char *data) {
   size_t total_size = size * nmemb;
-  strncat(data, (char *)ptr, total_size); // Append response data to buffer
+  if (total_size + strlen(data) < 2048) {  // Ensure buffer overflow is avoided
+    memcpy(data + strlen(data), ptr, total_size);
+    data[total_size + strlen(data)] = '\0';  // Null-terminate the string
+  }
   return total_size;
 }
 
@@ -37,13 +40,37 @@ int main() {
 
     curl_easy_cleanup(curl);
   }
-  cJSON *json = cJSON_Parse(response);
-  cJSON *price_json = cJSON_GetObjectItem(json, "price");
-  price = price_json->valuestring;
-  printf("Price: %s", price);
-  cJSON *change_json = cJSON_GetObjectItem(json, "change");
-  cJSON *time_json = cJSON_GetObjectItem(json, "time");
-  cJSON *volume = cJSON_GetObjectItem(json, "volume");
+
+  if (succ) {
+    cJSON *json = cJSON_Parse(response);
+    if (json != NULL) {
+      cJSON *price_json = cJSON_GetObjectItem(json, "price");
+      if (price_json && cJSON_IsString(price_json)) {
+        price = price_json->valuestring;
+        printf("Price: %s\n", price);
+      } else {
+        printf("Price not found or not a string.\n");
+      }
+      cJSON *change_json = cJSON_GetObjectItem(json, "change");
+      cJSON *time_json = cJSON_GetObjectItem(json, "time");
+      cJSON *volume_json = cJSON_GetObjectItem(json, "volume");
+
+      // Optionally print change, time, and volume if needed
+      if (change_json && cJSON_IsString(change_json)) {
+        printf("Change: %s\n", change_json->valuestring);
+      }
+      if (time_json && cJSON_IsString(time_json)) {
+        printf("Time: %s\n", time_json->valuestring);
+      }
+      if (volume_json) {
+        printf("Volume: %d\n", volume_json->valueint);
+      }
+
+      cJSON_Delete(json);  // Free the JSON object
+    } else {
+      printf("Error parsing JSON.\n");
+    }
+  }
 
   return 0;
 }
