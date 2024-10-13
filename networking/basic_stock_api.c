@@ -16,9 +16,10 @@ size_t write_callback(void *ptr, size_t size, size_t nmemb, char *data) {
 }
 
 int main() {
-  char *BASE_URL = "https://generic709.herokuapp.com/stockc/";
+  char *BASE_URL = "https://generic709.herokuapp.com/stockc/AAPL";
   char *ticker = "AAPL";
-  char *price;
+  int price;
+  int volume;
   CURL *curl;
   CURLcode res;
   char response[2048] = "";
@@ -45,17 +46,16 @@ int main() {
     cJSON *json = cJSON_Parse(response);
     if (json != NULL) {
       cJSON *price_json = cJSON_GetObjectItem(json, "price");
-      if (price_json && cJSON_IsString(price_json)) {
-        price = price_json->valuestring;
-        printf("Price: %s\n", price);
-      } else {
-        printf("Price not found or not a string.\n");
-      }
       cJSON *change_json = cJSON_GetObjectItem(json, "change");
       cJSON *time_json = cJSON_GetObjectItem(json, "time");
       cJSON *volume_json = cJSON_GetObjectItem(json, "volume");
 
-      // Optionally print change, time, and volume if needed
+
+      price = price_json->valueint;
+      printf("Price: %d \n", price );
+      change :wq
+
+          // Optionally print change, time, and volume if needed
       if (change_json && cJSON_IsString(change_json)) {
         printf("Change: %s\n", change_json->valuestring);
       }
