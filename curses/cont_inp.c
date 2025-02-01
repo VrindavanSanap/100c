@@ -1,4 +1,8 @@
 #include <ncurses.h>
+/*
+  code showcasing continous input
+  in c programing langauge
+*/
 
 int main() {
   // Initialize ncurses
