@@ -7,7 +7,7 @@ const char charset[] = ".,-~:;=!*#$@";
 // Define the size of the character set
 #define CHARSET_SIZE (sizeof(charset) - 1)
 
-char mapValueToChar(int value) {
+char map_value_to_char(int value) {
   // Ensure the value is in the range 0-255
   if (value < 0 || value > 255) {
     return '?';  // Return '?' for out-of-range values
@@ -43,7 +43,7 @@ void visualize_number(FILE* file, int index) {
         fclose(file);
         exit(1);
       }
-      printf("%c ", mapValueToChar(pixel));
+      printf("%c ", map_value_to_char(pixel));
     }
     printf("\n");
   }
