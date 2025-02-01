@@ -1,30 +1,28 @@
 //
-//  boilerplate.c 
-//  bp 
+//  boilerplate.c
+//  bp
 //
 //  Created by Vrindavan sanap on 7/13/23.
 //  Copyright © 2023 Vrindavan. All rights reserved.
 //
 
-
-//  Code will be used as boiler plate  
+//  Code will be used as boiler plate
 
 #include <stdio.h>
-void print_int_arr(int arr[], int len){
-    
+void print_int_arr(int arr[], int len) {
+
   printf("[");
-  for (int i = 0; i < len; i++){
+  for (int i = 0; i < len; i++) {
     printf("%d, ", arr[i]);
   }
   printf("] \n");
 }
 
-void print_float_arr(float arr[], int len){
+void print_float_arr(float arr[], int len) {
 
   printf("[");
-  for (int i = 0; i < len - 1; i++){
+  for (int i = 0; i < len - 1; i++) {
     printf("%.2f, ", arr[i]);
   }
-  printf("%.2f] \n", arr[len- 1]);
+  printf("%.2f] \n", arr[len - 1]);
 }
-
