@@ -21,7 +21,7 @@ char* encrypt(const char* data,const char* key, int data_size){
     char data_i = data[i] ;
     char key_i = key[i%key_size];
     char xor_i = data_i ^ key_i;
-    printf("%x," , xor_i);
+    printf("\\x%02x" , xor_i);
     enc[i] = xor_i;
   } 
   printf("\n");
@@ -34,7 +34,7 @@ int main(void){
   const char* key = "Doge";
   const char* enc = encrypt(data, key, strlen(data));
   const char* enc_enc = encrypt(enc, key, strlen(data));
-  printf("%s", enc_enc);
+  printf("%s \n", enc_enc);
   return 0;
 }
 
