@@ -10,11 +10,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#ifdef __APPLE__
-    #include <string.h>  // macOS prefers string.h
-#else
-    #include <strings.h> // Linux (Ubuntu)
-#endif
+#include <string.h>  // macOS prefers string.h
 
 #define MAX_STRING_LENGTH 100
 
