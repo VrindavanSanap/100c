@@ -9,8 +9,8 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h> // macOS prefers string.h
 #include <time.h>
-#include <string.h>  // macOS prefers string.h
 
 #define MAX_STRING_LENGTH 100
 
@@ -77,7 +77,7 @@ int main(int argc, char *argv[]) {
     chs[strlen(words[i]) + 1] = '.';
     chs[strlen(words[i]) + 2] = '\0';
 
-    for (int j = 0; j < strlen(chs) - 1; j++) {
+    for (int j = 0; j < (int)strlen(chs) - 1; j++) {
       char ch1[2];
       char ch2[2];
       ch1[0] = chs[j];
@@ -123,7 +123,7 @@ int main(int argc, char *argv[]) {
     strcpy(chs + 1, words[i]);
     chs[strlen(words[i]) + 1] = '.';
     chs[strlen(words[i]) + 2] = '\0';
-    for (int j = 0; j < strlen(chs) - 1; j++) {
+    for (int j = 0; j < (int)strlen(chs) - 1; j++) {
       char ch1[2];
       char ch2[2];
       ch1[0] = chs[j];
