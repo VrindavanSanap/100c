@@ -141,6 +141,6 @@ int main(int argc, char *argv[]) {
     }
   }
   printf("log_likelihood %.2f \n", log_likelihood);
-  printf("loss %.2f", -log_likelihood / (float)n);
+  printf("loss %.2f \n", -log_likelihood / (float)n);
   return 0;
 }
