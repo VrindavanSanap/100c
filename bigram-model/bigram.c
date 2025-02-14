@@ -69,7 +69,6 @@ int main(int argc, char *argv[]) {
 
   // Calculate bigram frequency matrix
   Dictionary dict = stoi();
-  char word[MAX_STRING_LENGTH];
   int N[27][27] = {0};
   for (int i = 0; i < n_words; i++) {
     char chs[strlen(words[i]) + 3];
