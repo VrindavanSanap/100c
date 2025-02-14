@@ -9,8 +9,13 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <strings.h>
 #include <time.h>
+#ifdef __APPLE__
+    #include <string.h>  // macOS prefers string.h
+#else
+    #include <strings.h> // Linux (Ubuntu)
+#endif
+
 #define MAX_STRING_LENGTH 100
 
 void min_max(const char words[][MAX_STRING_LENGTH], int n_words, int *min_ptr,
