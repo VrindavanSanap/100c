@@ -17,7 +17,7 @@ CFLAGS = -Wall -Wextra  #-O2
 OBJS = bar.o foo.o 
 
 TARGET = bar
-bar: bar.o foo.o
+$(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(TARGET)
 
 #bar.o: bar.c
