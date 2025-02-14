@@ -1,6 +1,4 @@
-#include <stdio.h>
 #include "foo.h"
+#include <stdio.h>
 
-int main(void){
-    printf("%d\n", add(2, 3));
-}
+int main(void) { printf("%d\n", add(2, 3)); }
