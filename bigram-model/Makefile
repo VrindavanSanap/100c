@@ -2,7 +2,8 @@ CC=clang
 
 CFLAGS=-Wall -Wextra -O2
 
-OBJS = bigram.o dict.o line_count.o print_arr.o itos.o stoi.o sample.o random.o prob_dist.o sum_arr.o
+OBJS = bigram.o dict.o line_count.o itos.o stoi.o sample.o random.o prob_dist.o sum_arr.o
+
 TARGET = bigram
 $(TARGET): $(OBJS) 
 	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS) -lm
@@ -15,3 +16,4 @@ $(TARGET): $(OBJS)
 .PHONY: clean
 clean:
 	rm -f $(OBJS) $(TARGET)
+

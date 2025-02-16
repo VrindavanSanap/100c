@@ -1,7 +1,6 @@
 #include "dict.h"
 #include "line_count.h"
 #include "plot_N.h"
-#include "print_arr.h"
 #include "prob_dist.h"
 #include "sample.h"
 #include "stoi.h"
