@@ -1,3 +1,4 @@
+#include "cJSON.h"
 #include <cjson/cJSON.h>
 #include <curl/curl.h>
 #include <stdbool.h>
@@ -53,7 +54,6 @@ int main() {
 
       price = price_json->valueint;
       printf("Price: %d \n", price );
-      change :wq
 
           // Optionally print change, time, and volume if needed
       if (change_json && cJSON_IsString(change_json)) {
