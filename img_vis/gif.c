@@ -1,18 +1,12 @@
 #include <SDL.h>
 #include <SDL_image.h>
+#include <signal.h>
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/ioctl.h>
 #include <unistd.h>
-#include <stdbool.h>
-#include <stdio.h>
-#include <stdbool.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <signal.h>
-#include <sys/ioctl.h>
 void handle_sigint(int sig) {
   printf("\nCaught SIGINT (Ctrl+C). Exiting gracefully.\n");
   exit(0);
