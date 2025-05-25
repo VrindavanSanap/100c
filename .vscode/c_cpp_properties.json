@@ -4,22 +4,22 @@
             "name": "Mac",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/opt/homebrew/include/SDL2",
-                "/opt/homebrew/lib"
+                "/opt/homebrew/include/SDL2"
             ],
             "defines": [],
             "macFrameworkPath": [
-                "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"
+                
+"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"
             ],
             "compilerPath": "/usr/bin/clang",
-            "cStandard": "c17",
-            "cppStandard": "c++17",
+            "cStandard": "c23",
+            "cppStandard": "c++23",
             "intelliSenseMode": "macos-clang-arm64",
             "compilerArgs": [
-               
                 "-I/opt/homebrew/include/SDL2",
-                "-L/opt/homebrew/",
-                "lib -lSDL2 -lSDL2_image"
+                "-L/opt/homebrew/lib",
+                "-lSDL2",
+                "-lSDL2_image"
             ]
         }
     ],
