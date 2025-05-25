@@ -1,6 +1,9 @@
 {
     "files.associations": {
         "dict.h": "c",
-        "itos.h": "c"
+        "itos.h": "c",
+        "sdl.h": "c",
+        "sdl_image.h": "c",
+        "stdio.h": "c"
     }
 }
