@@ -1,0 +1,3 @@
+/Users/vrindavan/Code/100c/extern/build/CMakeFiles/extern_example.dir
+/Users/vrindavan/Code/100c/extern/build/CMakeFiles/ALL_BUILD.dir
+/Users/vrindavan/Code/100c/extern/build/CMakeFiles/ZERO_CHECK.dir

@@ -1,0 +1,65 @@
+{
+  "buildCommand" : {
+    "command" : "prepareForIndexing",
+    "enableIndexBuildArena" : false,
+    "targets" : null
+  },
+  "configuredTargets" : [
+    {
+      "guid" : "510dfb5979bc3c2a562ae4499a87ce7169ab3ee41e124d75fa70f30f07920d04"
+    },
+    {
+      "guid" : "510dfb5979bc3c2a562ae4499a87ce71220b03f8578f6631ce1961e073ac6450"
+    },
+    {
+      "guid" : "510dfb5979bc3c2a562ae4499a87ce7124aedba8ab9a39147f7cca667347b1a9"
+    }
+  ],
+  "containerPath" : "/Users/vrindavan/Code/100c/extern/build/extern_example.xcodeproj",
+  "continueBuildingAfterErrors" : true,
+  "dependencyScope" : "workspace",
+  "enableIndexBuildArena" : false,
+  "hideShellScriptEnvironment" : false,
+  "parameters" : {
+    "action" : "build",
+    "activeArchitecture" : "arm64",
+    "activeRunDestination" : {
+      "disableOnlyActiveArch" : false,
+      "platform" : "macosx",
+      "sdk" : "macosx15.5",
+      "sdkVariant" : "macos",
+      "supportedArchitectures" : [
+        "arm64e",
+        "arm64",
+        "x86_64"
+      ],
+      "targetArchitecture" : "arm64"
+    },
+    "arenaInfo" : {
+      "buildIntermediatesPath" : "",
+      "buildProductsPath" : "",
+      "derivedDataPath" : "/Users/vrindavan/Library/Developer/Xcode/DerivedData",
+      "indexDataStoreFolderPath" : "/Users/vrindavan/Library/Developer/Xcode/DerivedData/extern_example-bqyjevxmmwtfihbmpczgbkmdbuqo/Index.noindex/DataStore",
+      "indexEnableDataStore" : true,
+      "indexPCHPath" : "/Users/vrindavan/Library/Developer/Xcode/DerivedData/extern_example-bqyjevxmmwtfihbmpczgbkmdbuqo/Index.noindex/PrecompiledHeaders",
+      "pchPath" : ""
+    },
+    "configurationName" : "Debug",
+    "overrides" : {
+      "synthesized" : {
+        "table" : {
+          "ENABLE_PREVIEWS" : "NO",
+          "ENABLE_XOJIT_PREVIEWS" : "NO",
+          "ONLY_ACTIVE_ARCH" : "YES"
+        }
+      }
+    }
+  },
+  "qos" : "default",
+  "schemeCommand" : "launch",
+  "showNonLoggedProgress" : true,
+  "useDryRun" : true,
+  "useImplicitDependencies" : true,
+  "useLegacyBuildLocations" : false,
+  "useParallelTargets" : true
+}
