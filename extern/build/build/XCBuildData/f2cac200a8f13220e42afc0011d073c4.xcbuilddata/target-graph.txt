@@ -1,0 +1,2 @@
+Target dependency graph (1 target)
+Target 'ZERO_CHECK' in project 'extern_example' (no dependencies)
