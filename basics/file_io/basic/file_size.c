@@ -10,16 +10,14 @@
 
 #include <stdio.h>
 
-long file_size(FILE* fp)
-{
-    if (fp == NULL)
-    {
-        printf("File Not Found!\n");
-        return -1;
-    }
-    fseek(fp, 0L, SEEK_END);
-    long int res = ftell(fp);
-    fclose(fp);
+long file_size(FILE* fp) {
+  if (fp == NULL) {
+    printf("File Not Found!\n");
+    return -1;
+  }
+  fseek(fp, 0L, SEEK_END);
+  long int res = ftell(fp);
+  fclose(fp);
 
-    return res;
+  return res;
 }

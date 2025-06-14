@@ -10,32 +10,26 @@
 
 #include <stdio.h>
 
-float sum_float_l1(float arr[], int size)
-{
-    float s = 0;
-    for (int i = 0; i < size; i++)
-    {
-        s += arr[i];
-    }
-    return s;
+float sum_float_l1(float arr[], int size) {
+  float s = 0;
+  for (int i = 0; i < size; i++) {
+    s += arr[i];
+  }
+  return s;
 }
 
-int sum_int_l1(int arr[], int size)
-{
-    int s = 0;
-    for (int i = 0; i < size; i++)
-    {
-        s += arr[i];
-    }
-    return s;
+int sum_int_l1(int arr[], int size) {
+  int s = 0;
+  for (int i = 0; i < size; i++) {
+    s += arr[i];
+  }
+  return s;
 }
 
-float sum_float_l2(float arr[], int size)
-{
-    float s = 0;
-    for (int i = 0; i < size; i++)
-    {
-        s += arr[i] * arr[i];
-    }
-    return s;
+float sum_float_l2(float arr[], int size) {
+  float s = 0;
+  for (int i = 0; i < size; i++) {
+    s += arr[i] * arr[i];
+  }
+  return s;
 }
