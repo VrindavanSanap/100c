@@ -7,23 +7,28 @@
 
 // Code defines several general purpose prime number related functions
 
-int is_prime(int num) {
+int is_prime(int num)
+{
     if (num <= 1)
         return 0;
-    for (int i = 2; i * i <= num; i++) {
+    for (int i = 2; i * i <= num; i++)
+    {
         if (num % i == 0)
             return 0;
     }
     return 1;
 }
 
-int nth_prime(int n) {
+int nth_prime(int n)
+{
     if (n <= 0)
         return -1;
     int count = 0;
     int num = 2;
-    while (count < n) {
-        if (is_prime(num)) {
+    while (count < n)
+    {
+        if (is_prime(num))
+        {
             count++;
         }
         num++;

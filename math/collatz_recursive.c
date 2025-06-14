@@ -10,22 +10,29 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void collatz(int n) {
+void collatz(int n)
+{
     printf("%d \n", n);
-    if (n == 1) {
+    if (n == 1)
+    {
         return;
     }
 
-    if (n % 2 == 0) {
+    if (n % 2 == 0)
+    {
         n = n / 2;
-    } else {
+    }
+    else
+    {
         n = 3 * n + 1;
     }
     collatz(n);
 }
 
-int main(int argc, char *argv[]) {
-    if (argc != 2) {
+int main(int argc, char* argv[])
+{
+    if (argc != 2)
+    {
         printf("usage: collatz n");
         return 0;
     }

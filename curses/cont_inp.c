@@ -4,21 +4,24 @@
   in c programing langauge
 */
 
-int main() {
+int main()
+{
     // Initialize ncurses
     initscr();
-    cbreak();             // Disable line buffering
-    noecho();             // Don't echo pressed keys
+    cbreak(); // Disable line buffering
+    noecho(); // Don't echo pressed keys
     keypad(stdscr, TRUE); // Enable function keys and arrow keys
 
     printw("Press any key to see it on the screen. Press 'q' to exit.\n");
     refresh(); // Refresh to show the initial message
 
     int ch;
-    while (1) {
+    while (1)
+    {
         ch = getch(); // Get keyboard input
         // Check for 'q' key to quit
-        if (ch == 'q') {
+        if (ch == 'q')
+        {
             break;
         }
         // Print the character to the screen

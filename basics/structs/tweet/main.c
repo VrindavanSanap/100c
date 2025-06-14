@@ -5,7 +5,8 @@
 #include <stdio.h>
 #include <string.h>
 
-int main(void) {
+int main(void)
+{
     Tweet banger;
     snprintf(banger.author, sizeof(banger.author), "Beff Jezoz");
     snprintf(banger.tweet, sizeof(banger.tweet), "A C C L L E R A T E");
