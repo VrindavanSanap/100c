@@ -13,16 +13,20 @@
 
 #define MAX_STRING_LENGTH 100
 
-void min_max(const char words[][MAX_STRING_LENGTH], int n_words, int *min_ptr, int *max_ptr) {
+void min_max(const char words[][MAX_STRING_LENGTH], int n_words, int* min_ptr, int* max_ptr)
+{
     int max = 0;
     int min = 999;
     int length;
-    for (int i = 0; i < n_words; i++) {
+    for (int i = 0; i < n_words; i++)
+    {
         length = strlen(words[i]);
-        if (max < length) {
+        if (max < length)
+        {
             max = length;
         }
-        if (min > length) {
+        if (min > length)
+        {
             min = length;
         }
     }
@@ -30,26 +34,32 @@ void min_max(const char words[][MAX_STRING_LENGTH], int n_words, int *min_ptr, i
     *max_ptr = max;
 }
 
-void read_strings(FILE *file, char strings[][MAX_STRING_LENGTH], int n_words) {
+void read_strings(FILE* file, char strings[][MAX_STRING_LENGTH], int n_words)
+{
     int i = 0;
-    while (i < n_words && fgets(strings[i], MAX_STRING_LENGTH, file)) {
+    while (i < n_words && fgets(strings[i], MAX_STRING_LENGTH, file))
+    {
         int length = strlen(strings[i]);
-        if (length > 0 && strings[i][length - 1] == '\n') {
+        if (length > 0 && strings[i][length - 1] == '\n')
+        {
             strings[i][length - 1] = '\0';
         }
         i++;
     }
 }
 
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[])
+{
     srand(time(NULL));
-    char *file_name = "./names.txt";
-    if (argc == 2) {
+    char* file_name = "./names.txt";
+    if (argc == 2)
+    {
         file_name = argv[1];
     }
 
-    FILE *file = fopen(file_name, "r");
-    if (file == NULL) {
+    FILE* file = fopen(file_name, "r");
+    if (file == NULL)
+    {
         perror("Error opening file");
         return 1;
     }
@@ -67,15 +77,17 @@ int main(int argc, char *argv[]) {
 
     // Calculate bigram frequency matrix
     Dictionary dict = stoi();
-    int N[27][27] = {0};
-    for (int i = 0; i < n_words; i++) {
+    int N[27][27] = { 0 };
+    for (int i = 0; i < n_words; i++)
+    {
         char chs[strlen(words[i]) + 3];
         chs[0] = '.';
         strcpy(chs + 1, words[i]);
         chs[strlen(words[i]) + 1] = '.';
         chs[strlen(words[i]) + 2] = '\0';
 
-        for (int j = 0; j < (int)strlen(chs) - 1; j++) {
+        for (int j = 0; j < (int)strlen(chs) - 1; j++)
+        {
             char ch1[2];
             char ch2[2];
             ch1[0] = chs[j];
@@ -91,19 +103,24 @@ int main(int argc, char *argv[]) {
 
     // Calculate probability matrix
     float p[27][27];
-    for (int i = 0; i < 27; i++) {
-        for (int j = 0; j < 27; j++) {
+    for (int i = 0; i < 27; i++)
+    {
+        for (int j = 0; j < 27; j++)
+        {
             p[i][j] = (float)N[i][j];
         }
         prob_dist(p[i], 27);
     }
 
     // Sample from the model
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 10; i++)
+    {
         int ix = 0;
-        while (1) {
+        while (1)
+        {
             ix = sample(p[ix], 27);
-            if (ix == 0) {
+            if (ix == 0)
+            {
                 break;
             }
             printf("%c", itos[ix]);
@@ -115,13 +132,15 @@ int main(int argc, char *argv[]) {
     printf("\n");
     float log_likelihood = 0.0;
     int n = 0;
-    for (int i = 0; i < n_words; i++) {
+    for (int i = 0; i < n_words; i++)
+    {
         char chs[strlen(words[i]) + 3];
         chs[0] = '.';
         strcpy(chs + 1, words[i]);
         chs[strlen(words[i]) + 1] = '.';
         chs[strlen(words[i]) + 2] = '\0';
-        for (int j = 0; j < (int)strlen(chs) - 1; j++) {
+        for (int j = 0; j < (int)strlen(chs) - 1; j++)
+        {
             char ch1[2];
             char ch2[2];
             ch1[0] = chs[j];

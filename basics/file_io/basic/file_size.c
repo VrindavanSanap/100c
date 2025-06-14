@@ -10,8 +10,10 @@
 
 #include <stdio.h>
 
-long file_size(FILE *fp) {
-    if (fp == NULL) {
+long file_size(FILE* fp)
+{
+    if (fp == NULL)
+    {
         printf("File Not Found!\n");
         return -1;
     }

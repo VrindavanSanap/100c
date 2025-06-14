@@ -1,13 +1,14 @@
 #include <stdio.h>
 
-int main() {
+int main()
+{
 
     // declaring values
     int x = 42;
     printf("This is the value of x %d\n", x);
-    int *xPtr = &x;
+    int* xPtr = &x;
     printf("This is the value of xPtr %p\n", xPtr);
-    int **xPtrPtr = &xPtr;
+    int** xPtrPtr = &xPtr;
     printf("This is the value of xPtrPtr %p\n", xPtrPtr);
 
     // dereferencing variables
