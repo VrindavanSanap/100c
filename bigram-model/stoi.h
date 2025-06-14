@@ -5,4 +5,4 @@
 
 Dictionary stoi(void);
 
-#endif // STOI_H
+#endif  // STOI_H

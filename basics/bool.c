@@ -6,13 +6,11 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-int main(void)
-{
-    // this is exactly same as int x = 1
-    bool x = true;
+int main(void) {
+  // this is exactly same as int x = 1
+  bool x = true;
 
-    if (x)
-    {
-        printf("x is true!\n");
-    }
+  if (x) {
+    printf("x is true!\n");
+  }
 }

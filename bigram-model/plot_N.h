@@ -5,4 +5,4 @@
 
 void plot_N(int N[27][27]);
 void plot_p(float p[27][27]);
-#endif // PLOT_N_H
+#endif  // PLOT_N_H

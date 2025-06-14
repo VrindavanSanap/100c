@@ -4,4 +4,4 @@
 
 long file_size(FILE* file);
 
-#endif // FILE_SIZE_H
+#endif  // FILE_SIZE_H

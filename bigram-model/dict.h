@@ -3,16 +3,14 @@
 
 #define MAX_DICTIONARY_SIZE 100
 
-typedef struct
-{
-    char key[50];
-    int value;
+typedef struct {
+  char key[50];
+  int value;
 } KeyValuePair;
 
-typedef struct
-{
-    KeyValuePair pairs[MAX_DICTIONARY_SIZE];
-    int size;
+typedef struct {
+  KeyValuePair pairs[MAX_DICTIONARY_SIZE];
+  int size;
 } Dictionary;
 
 void init_dict(Dictionary* dict);
