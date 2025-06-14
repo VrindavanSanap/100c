@@ -1,13 +1,11 @@
 //
-//  primes.c 
-//  100c 
+//  primes.c
+//  100c
 //
 //  Created by Vrindavan sanap on 7/13/23.
 //
 
-
-// Code defines several general purpose prime number related functions 
-
+// Code defines several general purpose prime number related functions
 
 int is_prime(int num) {
     if (num <= 1)
@@ -23,7 +21,7 @@ int nth_prime(int n) {
     if (n <= 0)
         return -1;
     int count = 0;
-    int num = 2; 
+    int num = 2;
     while (count < n) {
         if (is_prime(num)) {
             count++;

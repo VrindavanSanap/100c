@@ -4,4 +4,4 @@
 unsigned int random_u32();
 float random_f32();
 
-#endif 
+#endif

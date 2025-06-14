@@ -10,4 +10,3 @@ int compare_ints(const void *p, const void *q);
 void sort_ints(int *a, size_t n);
 
 #endif // MY_SORT_HEADER_H
-

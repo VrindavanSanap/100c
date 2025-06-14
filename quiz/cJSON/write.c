@@ -44,77 +44,74 @@
 
 */
 
-#include <stdio.h>
 #include "cJSON.h"
-
+#include <stdio.h>
 
 char *create_monitor(void) {
-  const unsigned int resolution_numbers[3][2] = {
-      {1280, 720}, {1920, 1080}, {3840, 2160}};
-  char *string = NULL;
-  cJSON *name = NULL;
-  cJSON *resolutions = NULL;
-  cJSON *resolution = NULL;
-  cJSON *width = NULL;
-  cJSON *height = NULL;
-  size_t index = 0;
+    const unsigned int resolution_numbers[3][2] = {{1280, 720}, {1920, 1080}, {3840, 2160}};
+    char *string = NULL;
+    cJSON *name = NULL;
+    cJSON *resolutions = NULL;
+    cJSON *resolution = NULL;
+    cJSON *width = NULL;
+    cJSON *height = NULL;
+    size_t index = 0;
 
-  // Create empty json object
-  cJSON *monitor = cJSON_CreateObject();
-  if (monitor == NULL) {
-    goto end;
-  }
-  // Add name to that object
-  name = cJSON_CreateString("Awesome 4K");
-  if (name == NULL) {
-    goto end;
-  }
-  cJSON_AddItemToObject(monitor, "name", name);
-
-  // Add resolutions to that object
-  resolutions = cJSON_CreateArray();
-  if (resolutions == NULL) {
-    goto end;
-  }
-  cJSON_AddItemToObject(monitor, "resolutions", resolutions);
-  for (index = 0; index < (sizeof(resolution_numbers) / (2 * sizeof(int)));
-       ++index) {
-    resolution = cJSON_CreateObject();
-    if (resolution == NULL) {
-      goto end;
+    // Create empty json object
+    cJSON *monitor = cJSON_CreateObject();
+    if (monitor == NULL) {
+        goto end;
     }
-    cJSON_AddItemToArray(resolutions, resolution);
-
-    width = cJSON_CreateNumber(resolution_numbers[index][0]);
-    if (width == NULL) {
-      goto end;
+    // Add name to that object
+    name = cJSON_CreateString("Awesome 4K");
+    if (name == NULL) {
+        goto end;
     }
-    cJSON_AddItemToObject(resolution, "width", width);
+    cJSON_AddItemToObject(monitor, "name", name);
 
-    height = cJSON_CreateNumber(resolution_numbers[index][1]);
-    if (height == NULL) {
-      goto end;
+    // Add resolutions to that object
+    resolutions = cJSON_CreateArray();
+    if (resolutions == NULL) {
+        goto end;
     }
-    cJSON_AddItemToObject(resolution, "height", height);
-  }
+    cJSON_AddItemToObject(monitor, "resolutions", resolutions);
+    for (index = 0; index < (sizeof(resolution_numbers) / (2 * sizeof(int))); ++index) {
+        resolution = cJSON_CreateObject();
+        if (resolution == NULL) {
+            goto end;
+        }
+        cJSON_AddItemToArray(resolutions, resolution);
 
-  string = cJSON_Print(monitor);
-  if (string == NULL) {
-    fprintf(stderr, "Failed to print monitor.\n");
-  }
+        width = cJSON_CreateNumber(resolution_numbers[index][0]);
+        if (width == NULL) {
+            goto end;
+        }
+        cJSON_AddItemToObject(resolution, "width", width);
+
+        height = cJSON_CreateNumber(resolution_numbers[index][1]);
+        if (height == NULL) {
+            goto end;
+        }
+        cJSON_AddItemToObject(resolution, "height", height);
+    }
+
+    string = cJSON_Print(monitor);
+    if (string == NULL) {
+        fprintf(stderr, "Failed to print monitor.\n");
+    }
 
 end:
-  cJSON_Delete(monitor);
-  return string;
+    cJSON_Delete(monitor);
+    return string;
 }
-int main() { 
-  FILE *file;
+int main() {
+    FILE *file;
 
-  char* monitor_string = create_monitor();
-  file = fopen("monitor.json", "w");
-  fprintf(file, "%s\n", monitor_string);
-  printf("%s", monitor_string);
-  fclose(file);
+    char *monitor_string = create_monitor();
+    file = fopen("monitor.json", "w");
+    fprintf(file, "%s\n", monitor_string);
+    printf("%s", monitor_string);
+    fclose(file);
 
-  return 0; 
-  }
+    return 0;
+}

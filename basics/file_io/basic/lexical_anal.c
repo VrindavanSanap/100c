@@ -2,8 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-
-#define TABLE_SIZE 128  
+#define TABLE_SIZE 128
 
 int total_words = 0;
 
@@ -14,7 +13,7 @@ struct HashNode {
 };
 
 struct HashTable {
-    struct HashNode *table[TABLE_SIZE];  
+    struct HashNode *table[TABLE_SIZE];
 };
 
 struct HashNode *createHashNode(char key, int value) {
@@ -29,9 +28,7 @@ struct HashNode *createHashNode(char key, int value) {
     return newNode;
 }
 
-int hashFunction(char key) {
-    return (int)key % TABLE_SIZE;
-}
+int hashFunction(char key) { return (int)key % TABLE_SIZE; }
 
 void insert(struct HashTable *ht, char key, int value) {
     int index = hashFunction(key);
@@ -71,12 +68,13 @@ void printHashTable(struct HashTable *ht) {
     }
 }
 void print_lexical_anal(struct HashTable *ht) {
-  for (int i = 0; i < TABLE_SIZE; i++) {
-    struct HashNode *current = ht->table[i];
-    while (current != NULL) {
-    char c= current->key;
-    int n = current->value;
-    printf("Number of words starting with %c is %d (%.2f %)\n" ,c,n ,(((float)n)/(float)total_words) * 100);
+    for (int i = 0; i < TABLE_SIZE; i++) {
+        struct HashNode *current = ht->table[i];
+        while (current != NULL) {
+            char c = current->key;
+            int n = current->value;
+            printf("Number of words starting with %c is %d (%.2f %)\n", c, n,
+                   (((float)n) / (float)total_words) * 100);
             current = current->next;
         }
     }
@@ -106,21 +104,20 @@ int main(int argc, char *argv[]) {
     char word[100];
     char *file_name = argv[1];
     FILE *file = fopen(file_name, "r");
-    if (file == NULL){
-      perror("Error opening file");
-      return 1;
+    if (file == NULL) {
+        perror("Error opening file");
+        return 1;
     }
     while (fscanf(file, "%99s", word) == 1) {
-      total_words++;
-      int res = get(ht, word[0]);
-      if (res == -1){
-        insert(ht, word[0], 1);
-      }else{
-        insert(ht, word[0], res + 1);
-      }
+        total_words++;
+        int res = get(ht, word[0]);
+        if (res == -1) {
+            insert(ht, word[0], 1);
+        } else {
+            insert(ht, word[0], res + 1);
+        }
     }
     print_lexical_anal(ht);
     freeHashTable(ht);
     return 0;
 }
-

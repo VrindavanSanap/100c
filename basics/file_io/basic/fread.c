@@ -1,7 +1,6 @@
 #include <stdio.h>
 
-int main()
-{
+int main() {
     // buffer to store data
     char buffer[33];
     int count;

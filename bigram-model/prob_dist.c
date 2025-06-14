@@ -13,8 +13,8 @@
 #include <stdio.h>
 
 void prob_dist(float *x, int size) {
-  float sum = sum_float_l1(x, size);
-  for (int i = 0; i < size; i++) {
-    x[i] /= sum;
-  }
+    float sum = sum_float_l1(x, size);
+    for (int i = 0; i < size; i++) {
+        x[i] /= sum;
+    }
 }
