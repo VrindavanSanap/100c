@@ -114,7 +114,7 @@ int main(int argc, char* argv[]) {
     SDL_Quit();
     return 1;
   }
-  char* img_loc = "./images/pepe.png";
+  char* img_loc = "./images/flower.png";
 
   SDL_Surface* surface = IMG_Load(img_loc);
   if (!surface) {
