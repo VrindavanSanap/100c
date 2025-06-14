@@ -10,5 +10,8 @@
         "print_arr.h": "c",
         "stdbool.h": "c"
     },
-    "cmake.ignoreCMakeListsMissing": true
-}
+    "cmake.ignoreCMakeListsMissing": true,
+    "C_Cpp.clang_format_style": "file",
+    "editor.formatOnSave": true
+  }
+  
