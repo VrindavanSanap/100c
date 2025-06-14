@@ -1,7 +1,9 @@
 #include <stdio.h>
 
-int main() {
-    enum LEVEL {
+int main()
+{
+    enum LEVEL
+    {
         A = 20,
         B,
         C = 11,

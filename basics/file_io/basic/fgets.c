@@ -1,7 +1,8 @@
 #include <stdio.h>
 
-int main(void) {
-    FILE *fp;
+int main(void)
+{
+    FILE* fp;
     int c;
 
     fp = fopen("hello.txt", "r");

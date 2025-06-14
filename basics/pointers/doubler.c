@@ -1,8 +1,12 @@
 #include <stdio.h>
 
-void doubler(int *x) { *x *= 2; }
+void doubler(int* x)
+{
+    *x *= 2;
+}
 
-int main() {
+int main()
+{
 
     int x = 10;
 
