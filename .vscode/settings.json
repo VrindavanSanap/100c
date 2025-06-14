@@ -5,6 +5,8 @@
         "sdl.h": "c",
         "sdl_image.h": "c",
         "stdio.h": "c",
-        "vector": "c"
+        "vector": "c",
+        "sum_arr.h": "c",
+        "print_arr.h": "c"
     }
 }
