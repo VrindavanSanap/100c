@@ -10,10 +10,14 @@
 
 #include <stdlib.h>
 
-int compare_ints(const void *p, const void *q) {
-    int x = *(const int *)p;
-    int y = *(const int *)q;
+int compare_ints(const void* p, const void* q)
+{
+    int x = *(const int*)p;
+    int y = *(const int*)q;
     return (x > y) - (x < y);
 }
 
-void sort_ints(int *a, size_t n) { qsort(a, n, sizeof(*a), compare_ints); }
+void sort_ints(int* a, size_t n)
+{
+    qsort(a, n, sizeof(*a), compare_ints);
+}

@@ -7,14 +7,17 @@
   Ussage ./count_words <file_name.txt>
 */
 
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[])
+{
 
-    if (argc != 2) {
+    if (argc != 2)
+    {
         printf("Ussage ./count_words <file_name.txt> \n");
     }
-    char *file_name = argv[1];
-    FILE *file = fopen(file_name, "r");
-    if (file == NULL) {
+    char* file_name = argv[1];
+    FILE* file = fopen(file_name, "r");
+    if (file == NULL)
+    {
         perror("Error opening file");
         return 1;
     }
@@ -29,14 +32,18 @@ int main(int argc, char *argv[]) {
     float average_word_size = 0;
     float sum = 0;
 
-    while (fscanf(file, "%99s", word) == 1) {
+    while (fscanf(file, "%99s", word) == 1)
+    {
         n_words += 1;
         word_size = strlen(word);
         printf("%d %s \n", word_size, word);
-        if (word_size < max_word_size) {
+        if (word_size < max_word_size)
+        {
             strcpy(min_word, word);
             min_word_size = word_size;
-        } else {
+        }
+        else
+        {
             strcpy(max_word, word);
             max_word_size = word_size;
         }

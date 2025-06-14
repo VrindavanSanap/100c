@@ -1,6 +1,6 @@
 "r");
 #include
-% d % d % s % s *stream;
+% d % d % s % s* stream;
 //
 //
 //

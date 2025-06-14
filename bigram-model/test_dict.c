@@ -1,7 +1,8 @@
 #include "dict.h"
 #include <stdio.h>
 
-int main() {
+int main()
+{
     Dictionary dict;
     init_dict(&dict);
 

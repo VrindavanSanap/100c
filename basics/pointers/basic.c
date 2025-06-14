@@ -8,10 +8,11 @@
 
 #include <stdio.h>
 
-int main(void) {
+int main(void)
+{
     int x = 10;
-    int *int_ptr = &x;
-    int **ptr_to_ptr = &int_ptr;
+    int* int_ptr = &x;
+    int** ptr_to_ptr = &int_ptr;
 
     printf("x = %d \n", x);
     printf("Pointer to x = %p \n", int_ptr);

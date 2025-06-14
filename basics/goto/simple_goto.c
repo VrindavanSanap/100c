@@ -1,6 +1,7 @@
 #include <stdio.h>
 
-int main(void) {
+int main(void)
+{
     printf("One\n");
     printf("Two\n");
     goto skip_3;

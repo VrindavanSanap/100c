@@ -1,6 +1,7 @@
 #include <stdio.h>
 
-int main() {
+int main()
+{
     char msg[] = "Hello";
 
     // returns size of msg in bytes
