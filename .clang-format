@@ -1,3 +1,11 @@
-BasedOnStyle: LLVM
+BasedOnStyle: WebKit
 IndentWidth: 4
+TabWidth: 4
+UseTab: Never
 ColumnLimit: 100
+AllowShortIfStatementsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: Inline
+BreakBeforeBraces: Allman
+PointerAlignment: Left
+SpaceBeforeParens: ControlStatements
+AlwaysBreakTemplateDeclarations: Yes
