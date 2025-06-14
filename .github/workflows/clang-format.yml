@@ -1,33 +1,34 @@
-name: Auto Format C/C++ Code
+name: Auto-format with clang-format
 
 on:
   push:
-    branches: [main]  # Change this to your default branch name
-  pull_request:
-    branches: [main]
+    branches: [main]  # or your main working branch
+  workflow_dispatch:
 
 jobs:
-  clang-format:
+  auto-format:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Install clang-format
-      run: sudo apt-get update && sudo apt-get install -y clang-format
+      - name: Install clang-format (lightweight)
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends -y clang-format
 
-    - name: Run clang-format
-      run: |
-        find . \( -name '*.c' -o -name '*.cpp' -o -name '*.h' -o -name '*.hpp' \) \
-          -exec clang-format -i {} +
+      - name: Format source files
+        run: |
+          find . -type f \( -name '*.c' -o -name '*.cpp' -o -name '*.h' -o -name '*.hpp' \) \
+            -exec clang-format -i {} +
 
-    - name: Commit and push formatted code
-      run: |
-        git config user.name "github-actions"
-        git config user.email "github-actions@github.com"
-        git add .
-        git diff-index --quiet HEAD || git commit -m "Auto-format code with clang-format"
-        git push
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add .
+          git diff-index --quiet HEAD || git commit -m "Auto-format code with clang-format"
+          git push
