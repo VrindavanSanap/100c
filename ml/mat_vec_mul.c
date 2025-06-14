@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void matmul(float* xout, float* x, float* w, int n, int d) {
+void matmul(float *xout, float *x, float *w, int n, int d) {
     // W (d,n) @ x (n,) -> xout (d,)
     // by far the most amount of time is spent inside this little function
     int i;
@@ -19,8 +19,8 @@ int main() {
     int d = 2; // Number of rows in W and size of xout
 
     float w[] = {1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f}; // Sample weight matrix (d x n)
-    float x[] = {1.0f, 2.0f, 3.0f}; // Sample input vector (n,)
-    float xout[d]; // Output vector (d,)
+    float x[] = {1.0f, 2.0f, 3.0f};                   // Sample input vector (n,)
+    float xout[d];                                    // Output vector (d,)
 
     matmul(xout, x, w, n, d);
 
@@ -33,4 +33,3 @@ int main() {
 
     return 0;
 }
-

@@ -2,8 +2,8 @@
 #include <strings.h>
 
 int main() {
-  char *a = "apple";
-  char *b = "cat";
-  printf("%d", strcmp(a, b));
-  return 0;
+    char *a = "apple";
+    char *b = "cat";
+    printf("%d", strcmp(a, b));
+    return 0;
 }

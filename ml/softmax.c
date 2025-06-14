@@ -1,11 +1,9 @@
-#include <stdio.h>
 #include <math.h> // Include the math library for the expf function
+#include <stdio.h>
 #include <stdlib.h>
 // Define rand_float() function here or include the appropriate header if it's from a library
-float rand_float() {
-    return (float)rand();
-}
-void softmax(float* x, int size) {
+float rand_float() { return (float)rand(); }
+void softmax(float *x, int size) {
     float max_val = x[0];
     for (int i = 1; i < size; i++) {
         if (x[i] > max_val) {
@@ -26,7 +24,7 @@ void softmax(float* x, int size) {
 
 int main() {
     int size = 5;
-    float floats [] = {1.0, 2.0,3,4,5};
+    float floats[] = {1.0, 2.0, 3, 4, 5};
 
     // Initialize floats array with random values
     printf("softmax.c \n");
@@ -47,4 +45,3 @@ int main() {
 
     return 0;
 }
-
