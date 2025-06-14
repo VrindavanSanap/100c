@@ -7,6 +7,8 @@
         "stdio.h": "c",
         "vector": "c",
         "sum_arr.h": "c",
-        "print_arr.h": "c"
-    }
+        "print_arr.h": "c",
+        "stdbool.h": "c"
+    },
+    "cmake.ignoreCMakeListsMissing": true
 }
