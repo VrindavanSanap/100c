@@ -1,12 +1,18 @@
 #include <SDL.h>
 #include <SDL_image.h>
-#include <signal.h>
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/ioctl.h>
 #include <unistd.h>
+#include <stdbool.h>
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <signal.h>
+#include <sys/ioctl.h>
 void handle_sigint(int sig) {
   printf("\nCaught SIGINT (Ctrl+C). Exiting gracefully.\n");
   exit(0);
@@ -42,6 +48,7 @@ int get_term_height() {
   return (int)ws.ws_row;
 }
 void print_image(SDL_Surface* surface) {
+  
   printf("\e[1;1H\e[2J");
   int img_height = surface->h;
   int img_width = surface->w;
@@ -107,9 +114,16 @@ int main(int argc, char* argv[]) {
     SDL_Quit();
     return 1;
   }
-  char* img_loc = "./bw_imgs/pepe.png";
+  char* img_loc = "./images/pepe.png";
 
   SDL_Surface* surface = IMG_Load(img_loc);
+  if (!surface) {
+    printf("Failed to load image: %s\n", IMG_GetError());
+    IMG_Quit();
+    SDL_Quit();
+    return 1;
+  }
+
   print_image(surface);
 
   int prev_rows, prev_cols;
