@@ -1,1 +1,0 @@
-[Hash Tables · Crafting Interpreters](https://craftinginterpreters.com/hash-tables.html)

@@ -6,3 +6,14 @@
 *.o
 *.swp
 
+# CMake
+build/
+*/build/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.a
+*.so
+*.dylib
+*.xcodeproj/
