@@ -51,7 +51,7 @@ int main() {
       printw("Clock is running! \n");
       printw("Press R to reset the stopwatch \n");
       printw("Press P to pause the stopwatch \n");
-      printw("%.0f", milis()/1000000);
+      printw("%.0f", milis() / 1000000);
       if (ch == 'r') {
         current_state = RESET_STATE;
         clear();
