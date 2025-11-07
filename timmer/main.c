@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int main(){
+int main() {
   printf("Tell how many seconds do you want to set the timmer for? \n");
   printf("N Seconds:");
   int seconds;
