@@ -13,7 +13,7 @@
 // dynamic array
 struct dynamic_array {
   void *data;           // pointer to the first element
-  size_t size;          // number of elements currently stored
+  size_t num_elements;  // number of elements currently stored
   size_t capacity;      // total number of elements that fit before resizing
   size_t element_size;  // size of each element in bytes
 };
@@ -29,7 +29,7 @@ dynamic_array *da_build(size_t element_size) {
   dynamic_array *da = malloc(sizeof(dynamic_array));
   *da = (dynamic_array){
       .data = NULL,
-      .size = 0,
+      .num_elements = 0,
       .capacity = 0,
       .element_size = element_size,
   };
@@ -40,7 +40,7 @@ dynamic_array *da_build(size_t element_size) {
 void _da_resize(dynamic_array *da) {
   int growth_factor = 2;
   void *new_data;
-  size_t new_size = da->size;
+  size_t new_size = da->num_elements;
   if (new_size == 0) {
     new_size = 1;
     new_data = calloc(new_size, da->element_size);
@@ -53,22 +53,40 @@ void _da_resize(dynamic_array *da) {
     return;
   } else {
     da->data = new_data;
-    da->size = new_size;
+    da->num_elements = new_size;
   }
 }
 
 void da_insert_at(dynamic_array *da, const void *element, size_t index) {
   // input validation
-
+  if (!da || !element) {
+    return;
+  }
   // like python lists if index > size -> index = size
-  if (index > da->size) {
-    index = da->size;
+  if (index > da->num_elements) {
+    index = da->num_elements;
+  }
+  if (da->num_elements == da->capacity) {
+    _da_resize(da);
+    if (!da->data) {
+      fprintf(stderr, "Dynamic array data initialization failed\n");
+      return;
+    }
   }
 
   // step1
   // Move all da[index:capacity] -> da[index+1:capcity+1]
+  char *base_pointer = (char *)da->data;
+  char *desination_ptr = base_pointer + (index + 1) * (da->element_size);
+  char *source_ptr = base_pointer + (index) * (da->element_size);
+  size_t n_bytes = (da->num_elements - index) * (da->element_size);
+  // memmove(desination,const source, n_bytes)
+  memmove(desination_ptr, source_ptr, n_bytes);
   // step2
   // da[index] = element
+  // memcpy(dest, source, n_bytes)
+  memcpy(source_ptr, element, da->element_size);
+  da->num_elements++;
 }
 
 void da_insert_first(dynamic_array *da, const void *element) {}
