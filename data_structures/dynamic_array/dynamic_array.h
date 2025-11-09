@@ -33,7 +33,7 @@ dynamic_array *da_build(size_t element_size);
 // *item); because that forces a copy to item even if strictly wanted to just
 // read so its slower Takes O(1) time;
 
-void da_get_at(const dynamic_array *da, size_t index, void* out_element);
+void da_get_at(const dynamic_array *da, size_t index, void *out_element);
 
 // set element at given index
 // like python lists if index > dynamic_array.size : index = dyanmic_array.size
