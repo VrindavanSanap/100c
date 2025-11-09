@@ -10,9 +10,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-// dont declare this in the header file, beacuse the user of
-// dynamic array api does not need to know the internal of the
-// dynamic array
+// Don't declare this in the header file, because the user of the
+// dynamic array API does not need to know the internals of the
+// dynamic array.
 struct dynamic_array {
   void *data;           // pointer to the first element
   size_t num_elements;  // number of elements currently stored
@@ -21,11 +21,13 @@ struct dynamic_array {
 };
 
 /*
-unlike dynamic arrays in python3 (lists) which merely store pointers to
-the objects in the array contigously letting the objects themselves be
-non-contigious, which allows the objects to be non-homoginious
-this though comes at a performance hit as they have poor spatical
-cache locality but gives the advantage of veritaility
+Unlike dynamic arrays in Python 3 (lists), which merely store pointers to
+the objects in the array contiguously, letting the objects themselves be
+non-contiguous, this implementation stores objects themselves contiguously.
+The Python approach allows for heterogeneous objects, but this comes at a
+performance cost as they have poor spatial cache locality. This
+implementation, however, has better spatial cache locality but requires
+homogeneous objects.
 */
 dynamic_array *da_build(size_t element_size) {
   dynamic_array *da = malloc(sizeof(dynamic_array));
@@ -38,12 +40,12 @@ dynamic_array *da_build(size_t element_size) {
   return da;
 }
 
-// internal function
+// Internal function.
 void _da_resize(dynamic_array *da) {
-  // too do
-  // implement two seperate functions
-  // grow and shrink
-  // and use them according to the need
+  // TODO:
+  // Implement two separate functions:
+  // grow and shrink,
+  // and use them according to need.
 
   int growth_factor = 2;
   void *new_data;
@@ -64,10 +66,10 @@ void _da_resize(dynamic_array *da) {
   }
 }
 int da_get_at(const dynamic_array *da, size_t index, void *out_element) {
-  // return 0 if Success
-  // return -1 if Failure 0
+  // Returns 0 on success.
+  // Returns -1 on failure.
 
-  // takes O(1) time
+  // Takes O(1) time.
   if (!da || !out_element) {
     fprintf(stderr, "Invalid parameters passed\n");
     return -1;
@@ -99,13 +101,13 @@ int da_set_at(dynamic_array *da, const void *element, size_t index) {
 }
 
 void da_insert_at(dynamic_array *da, const void *element, size_t index) {
-  // input validation
+  // Input validation.
   if (!da || !element) {
     fprintf(stderr, "Invalid parameters passed\n");
     return;
   }
-  // index clamping
-  // like python lists if index > size -> index = size
+  // Index clamping.
+  // Like Python lists, if index > size, then index = size.
   if (index > da->num_elements) {
     index = da->num_elements;
   }
@@ -123,8 +125,8 @@ void da_insert_at(dynamic_array *da, const void *element, size_t index) {
     }
   }
 
-  // step1
-  //  da[index+1:capcity+1] = da[index:capacity]
+  // Step 1:
+  // `da[index+1:capacity+1] = da[index:capacity]`
   char *base_ptr = (char *)da->data;
   char *desination_ptr = base_ptr + (index + 1) * (da->element_size);
   char *source_ptr = base_ptr + (index) * (da->element_size);
@@ -132,35 +134,35 @@ void da_insert_at(dynamic_array *da, const void *element, size_t index) {
   size_t n_bytes = (da->num_elements - index) * (da->element_size);
   memmove(desination_ptr, source_ptr, n_bytes);
 
-  // step2
-  // da[index] = element
+  // Step 2:
+  // `da[index] = element`
   memcpy(source_ptr, element, da->element_size);
-  // step3
-  // update num_elements
+  // Step 3:
+  // Update `num_elements`.
   da->num_elements++;
 }
 void da_delete_at(dynamic_array *da, size_t index) {
-  // input validation
+  // Input validation.
   if (!da || index >= da->num_elements) {
     fprintf(stderr, "Invalid parameters passed\n");
     return;
   }
-  // step 1
-  // remove da[index]
+  // Step 1:
+  // Remove `da[index]`.
 
-  // step2
-  // da[index:capcity -1] = da[index+1:capacity]
+  // Step 2:
+  // `da[index:capacity - 1] = da[index+1:capacity]`
   char *base_ptr = (char *)da->data;
   char *desination_ptr = base_ptr + (index) * (da->element_size);
   char *source_ptr = base_ptr + (index + 1) * (da->element_size);
   size_t n_bytes = (da->num_elements - index - 1) * (da->element_size);
   memmove(desination_ptr, source_ptr, n_bytes);
 
-  // step3
-  // update num_elements
+  // Step 3:
+  // Update `num_elements`.
   da->num_elements--;
-  // optional step
-  // da_resize(da);
+  // Optional step:
+  // `_da_resize(da)`
 }
 
 void da_insert_first(dynamic_array *da, const void *element) {
@@ -169,7 +171,7 @@ void da_insert_first(dynamic_array *da, const void *element) {
 void da_delete_first(dynamic_array *da) { da_delete_at(da, 0); }
 
 void da_insert_last(dynamic_array *da, const void *element) {
-  // takes O(1) amortized time
+  // Takes O(1) amortized time.
   if (!da || !element) {
     fprintf(stderr, "Invalid parameters passed\n");
     return;
@@ -194,7 +196,7 @@ void da_insert_last(dynamic_array *da, const void *element) {
   da->num_elements++;
 }
 void da_delete_last(dynamic_array *da) {
-  // takes O(1) amortized time
+  // Takes O(1) amortized time.
   if (!da || da->num_elements == 0) {
     return;
   }

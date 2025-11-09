@@ -19,59 +19,60 @@ typedef struct dynamic_array dynamic_array;
 // Creates a dynamic array
 dynamic_array *da_build(size_t element_size);
 
-// Static operations (operations which do not modify the size of array)
+// Static operations (operations that do not modify the size of the array)
 
-// Ram model of computation
-// memory is array of w-bit words
-// key size >= log(capacity) ie all elements need to addressable
-// Read/write given an index takes O(1) time
-// Takes O(1) time ( memory address(element) = address(da)  + index *
-// element_size ) There fore da_get_at and da_set_at take O(1) time
+// RAM model of computation
+// memory is an array of w-bit words
+// key size >= log(capacity), i.e., all elements need to be addressable
+// Read/write for a given index takes O(1) time
+// Takes O(1) time (memory address(element) = address(da)  + index *
+// element_size). Therefore da_get_at and da_set_at take O(1) time
 
-// give element at given index
-// this is better than int da_get_at(dynamic_array *da, size_t index, void
-// *item); because that forces a copy to item even if strictly wanted to just
-// read so its slower Takes O(1) time;
+// Gives the element at the given index
+// This is better than int da_get_at(dynamic_array *da, size_t index, void
+// *item); because that forces a copy to item even if we only wanted to read,
+// so it's slower. Takes O(1) time;
 
-// returns 0 if success otherwise -1
+// returns 0 on success, otherwise -1
 int da_get_at(const dynamic_array *da, size_t index, void *out_element);
 
-// set element at given index
-// like python lists if index > dynamic_array.size : index = dyanmic_array.size
-// Takes O(1) time;
-// returns 0 if success otherwise -1
+// Sets the element at the given index
+// Like Python lists, if index > dynamic_array.size, index =
+// dyanmic_array.size Takes O(1) time;
+// returns 0 on success, otherwise -1
 int da_set_at(dynamic_array *da, const void *element, size_t index);
 
 // Dynamic operations
-// These operatoins change the size of the array
+// These operations change the size of the array
 
-// insert element at the start of the array;
-// takes O(n) time
-// shit all the other element to right by one-index, and then insert the given
-// element at first index;
+// Inserts an element at the start of the array.
+// Takes O(n) time
+// Shifts all other elements to the right by one index, and then inserts the
+// given element at the first index.
 void da_insert_first(dynamic_array *da, const void *element);
-// delete first element of the array
-// takes O(n) time
-// remove the first element and shit all the other element to left by one-index
+// Deletes the first element of the array.
+// Takes O(n) time
+// Removes the first element and shifts all other elements to the left by one
+// index.
 void da_delete_first(dynamic_array *da);
 
-// insert element at given idnex
-// move all elements starting from the given index to right by one index then
-// insert at given index takes O(n) time
+// Inserts an element at the given index.
+// Moves all elements starting from the given index to the right by one index,
+// then inserts at the given index. Takes O(n) time.
 void da_insert_at(dynamic_array *da, const void *element, size_t index);
-// insert element at given idnex
-// move all elements starting from the given index+1 to left by one index
-// takes O(n) time
+// Deletes an element at the given index.
+// Moves all elements starting from index + 1 to the left by one index.
+// Takes O(n) time.
 void da_delete_at(dynamic_array *da, size_t index);
 
-// insert element at the end of the array;
-// takes O(1) amortized time
+// Inserts an element at the end of the array.
+// Takes O(1) amortized time.
 void da_insert_last(dynamic_array *da, const void *element);
-// delete last element of the array
-// takes O(1) amortized time
+// Deletes the last element of the array.
+// Takes O(1) amortized time.
 void da_delete_last(dynamic_array *da);
 
-// give # elements present in the array
+// Gives the number of elements present in the array.
 size_t da_get_size(dynamic_array *da);
 
 #endif /* DYNAMIC_ARRAY_H */
