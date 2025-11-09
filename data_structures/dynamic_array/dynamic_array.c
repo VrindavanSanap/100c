@@ -60,7 +60,7 @@ void _da_resize(dynamic_array *da) {
     return;
   } else {
     da->data = new_data;
-    da->capacity= new_size;
+    da->capacity = new_size;
   }
 }
 int da_get_at(const dynamic_array *da, size_t index, void *out_element) {
