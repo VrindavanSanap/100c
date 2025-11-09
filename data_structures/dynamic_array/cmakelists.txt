@@ -1,10 +1,44 @@
 cmake_minimum_required(VERSION 3.10)
-
 project(dynamic_array C)
 
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED True)
 
-add_executable(dynamic_array main.c dynamic_array.c dynamic_array.h)
+# 1. Define your dynamic array as a LIBRARY
+# We include the .h file here so IDEs (like VSCode) can see it.
+add_library(dynamic_array_lib 
+    dynamic_array.c 
+    dynamic_array.h
+    set_interface/set_interface.c
+    set_interface/set_interface.h
+)
 
-target_include_directories(dynamic_array PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+# 2. Specify the include directory for the library
+# PUBLIC means:
+#   - The library itself (dynamic_array_lib) uses this path (PRIVATE).
+#   - Anyone who links to this library also gets this path (INTERFACE).
+target_include_directories(dynamic_array_lib 
+    PUBLIC 
+        ${CMAKE_CURRENT_SOURCE_DIR}
+        ${CMAKE_CURRENT_SOURCE_DIR}/set_interface
+)
+
+# 3. Define your demo EXECUTABLE
+add_executable(demo_app 
+    demo_dynamic_array.c
+)
+
+# 4. Link the demo app against your library
+target_link_libraries(demo_app 
+    PRIVATE dynamic_array_lib
+)
+
+# 5. Define the set interface demo EXECUTABLE
+add_executable(demo_set_interface
+    demo_set_interface.c
+)
+
+# 6. Link the set interface demo against your library
+target_link_libraries(demo_set_interface
+    PRIVATE dynamic_array_lib
+)
