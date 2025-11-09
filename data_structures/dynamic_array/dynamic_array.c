@@ -6,6 +6,7 @@
 //
 #include "dynamic_array.h"
 
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 // dont declare this in the header file, beacuse the user of
@@ -61,11 +62,42 @@ void _da_resize(dynamic_array *da) {
     da->num_elements = new_size;
   }
 }
+void da_get_at(const dynamic_array *da, size_t index, void *out_element) {
+  // takes O(1) time
+  if (!da || !out_element) {
+    fprintf(stderr, "Invalid parameters passed\n");
+    return;
+  }
+  if (index >= da->num_elements) {
+    fprintf(stderr, "IndexError: list index out of range\n");
+    return;
+  }
+
+  char *base_ptr = (char *)da->data;
+  char *source_ptr = base_ptr + index * da->element_size;
+  memcpy(out_element, source_ptr, da->element_size);
+  return;
+}
+void da_set_at(dynamic_array *da, const void *element, size_t index) {
+  if (!da || !element) {
+    fprintf(stderr, "Invalid parameters passed\n");
+    return;
+  }
+  if (index >= da->num_elements) {
+    fprintf(stderr, "IndexError: list index out of range\n");
+    return;
+  }
+
+  char *base_ptr = (char *)da->data;
+  char *destination_ptr = base_ptr + index * da->element_size;
+  memcpy(destination_ptr, element, da->element_size);
+  return;
+}
 
 void da_insert_at(dynamic_array *da, const void *element, size_t index) {
   // input validation
   if (!da || !element) {
-    fprintf(stderr, "Invalid parameters passed");
+    fprintf(stderr, "Invalid parameters passed\n");
     return;
   }
   // index clamping
@@ -77,7 +109,7 @@ void da_insert_at(dynamic_array *da, const void *element, size_t index) {
   if (da->num_elements == da->capacity) {
     _da_resize(da);
     if (!(da->data)) {
-      if (da->num_elements == 1) {
+      if (da->num_elements == 0) {
         fprintf(stderr, "Dynamic array data initialization failed\n");
       } else {
         fprintf(stderr, "Dynamic array resize failed while inserting\n");
@@ -106,7 +138,7 @@ void da_insert_at(dynamic_array *da, const void *element, size_t index) {
 void da_delete_at(dynamic_array *da, size_t index) {
   // input validation
   if (!da || index >= da->num_elements) {
-    fprintf(stderr, "Invalid parameters passed");
+    fprintf(stderr, "Invalid parameters passed\n");
     return;
   }
   // step 1
@@ -132,16 +164,16 @@ void da_insert_first(dynamic_array *da, const void *element) {
 }
 void da_delete_first(dynamic_array *da) { da_delete_at(da, 0); }
 
-// both of these take O(1) amortized time
 void da_insert_last(dynamic_array *da, const void *element) {
+  // takes O(1) amortized time
   if (!da || !element) {
-    fprintf(stderr, "Invalid parameters passed");
+    fprintf(stderr, "Invalid parameters passed\n");
     return;
   }
   if (da->num_elements == da->capacity) {
     _da_resize(da);
     if (!(da->data)) {
-      if (da->num_elements == 1) {
+      if (da->num_elements == 0) {
         fprintf(stderr, "Dynamic array data initialization failed\n");
       } else {
         fprintf(stderr, "Dynamic array resize failed while inserting\n");
@@ -157,4 +189,10 @@ void da_insert_last(dynamic_array *da, const void *element) {
 
   da->num_elements++;
 }
-void da_delete_last(dynamic_array *da) { da->num_elements--; };
+void da_delete_last(dynamic_array *da) {
+  // takes O(1) amortized time
+  if (!da || da->num_elements == 0) {
+    return;
+  }
+  da->num_elements--;
+};
