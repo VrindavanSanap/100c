@@ -34,7 +34,7 @@ dynamic_array *da_build(size_t element_size);
 // read so its slower Takes O(1) time;
 
 // returns 0 if success otherwise -1
-int da_get_at(const dynamic_array *da, size_t index, void* out_element);
+int da_get_at(const dynamic_array *da, size_t index, void *out_element);
 
 // set element at given index
 // like python lists if index > dynamic_array.size : index = dyanmic_array.size
