@@ -56,11 +56,11 @@ void da_delete_first(dynamic_array *da);
 // insert element at given idnex
 // move all elements starting from the given index to right by one index then
 // insert at given index takes O(n) time
-void insert_at(dynamic_array *da, const void *element, size_t index);
+void da_insert_at(dynamic_array *da, const void *element, size_t index);
 // insert element at given idnex
 // move all elements starting from the given index+1 to left by one index
 // takes O(n) time
-void delete_at(dynamic_array *da, size_t index);
+void da_delete_at(dynamic_array *da, size_t index);
 
 // insert element at the end of the array;
 // takes O(1) amortized time
