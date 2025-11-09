@@ -62,36 +62,39 @@ void _da_resize(dynamic_array *da) {
     da->num_elements = new_size;
   }
 }
-void da_get_at(const dynamic_array *da, size_t index, void *out_element) {
+int da_get_at(const dynamic_array *da, size_t index, void *out_element) {
+  // return 0 if Success
+  // return -1 if Failure 0
+
   // takes O(1) time
   if (!da || !out_element) {
     fprintf(stderr, "Invalid parameters passed\n");
-    return;
+    return -1;
   }
   if (index >= da->num_elements) {
     fprintf(stderr, "IndexError: list index out of range\n");
-    return;
+    return -1;
   }
 
   char *base_ptr = (char *)da->data;
   char *source_ptr = base_ptr + index * da->element_size;
   memcpy(out_element, source_ptr, da->element_size);
-  return;
+  return 0;
 }
-void da_set_at(dynamic_array *da, const void *element, size_t index) {
+int da_set_at(dynamic_array *da, const void *element, size_t index) {
   if (!da || !element) {
     fprintf(stderr, "Invalid parameters passed\n");
-    return;
+    return -1;
   }
   if (index >= da->num_elements) {
     fprintf(stderr, "IndexError: list index out of range\n");
-    return;
+    return -1;
   }
 
   char *base_ptr = (char *)da->data;
   char *destination_ptr = base_ptr + index * da->element_size;
   memcpy(destination_ptr, element, da->element_size);
-  return;
+  return 0;
 }
 
 void da_insert_at(dynamic_array *da, const void *element, size_t index) {
@@ -196,3 +199,11 @@ void da_delete_last(dynamic_array *da) {
   }
   da->num_elements--;
 };
+
+size_t da_get_size(dynamic_array *da) {
+  if (!da) {
+    fprintf(stderr, "Invalid parameters passed\n");
+    return;
+  }
+  return da->num_elements;
+}
