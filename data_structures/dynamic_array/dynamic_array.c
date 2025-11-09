@@ -9,6 +9,7 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 // dont declare this in the header file, beacuse the user of
 // dynamic array api does not need to know the internal of the
 // dynamic array
@@ -59,7 +60,7 @@ void _da_resize(dynamic_array *da) {
     return;
   } else {
     da->data = new_data;
-    da->num_elements = new_size;
+    da->capacity= new_size;
   }
 }
 int da_get_at(const dynamic_array *da, size_t index, void *out_element) {
@@ -203,7 +204,7 @@ void da_delete_last(dynamic_array *da) {
 size_t da_get_size(dynamic_array *da) {
   if (!da) {
     fprintf(stderr, "Invalid parameters passed\n");
-    return;
+    return 0;
   }
   return da->num_elements;
 }
