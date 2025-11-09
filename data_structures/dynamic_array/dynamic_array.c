@@ -38,9 +38,9 @@ dynamic_array *da_build(size_t element_size) {
 
 // internal function
 void _da_resize(dynamic_array *da) {
-  // too do 
+  // too do
   // implement two seperate functions
-  // grow and shrink 
+  // grow and shrink
   // and use them according to the need
 
   int growth_factor = 2;
