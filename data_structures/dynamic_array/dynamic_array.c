@@ -62,14 +62,21 @@ void da_insert_at(dynamic_array *da, const void *element, size_t index) {
   if (!da || !element) {
     return;
   }
+  // index clamping
   // like python lists if index > size -> index = size
   if (index > da->num_elements) {
     index = da->num_elements;
   }
+
   if (da->num_elements == da->capacity) {
     _da_resize(da);
-    if (!da->data) {
-      fprintf(stderr, "Dynamic array data initialization failed\n");
+    if (!(da->data)) {
+      if (da->num_elements == 1) {
+        fprintf(stderr, "Dynamic array data initialization failed\n");
+      } else {
+        fprintf(stderr, "Dynamic array resize failed while inserting\n");
+      }
+
       return;
     }
   }
@@ -80,11 +87,10 @@ void da_insert_at(dynamic_array *da, const void *element, size_t index) {
   char *desination_ptr = base_pointer + (index + 1) * (da->element_size);
   char *source_ptr = base_pointer + (index) * (da->element_size);
   size_t n_bytes = (da->num_elements - index) * (da->element_size);
-  // memmove(desination,const source, n_bytes)
   memmove(desination_ptr, source_ptr, n_bytes);
+
   // step2
   // da[index] = element
-  // memcpy(dest, source, n_bytes)
   memcpy(source_ptr, element, da->element_size);
   da->num_elements++;
 }
