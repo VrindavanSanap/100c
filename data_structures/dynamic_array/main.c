@@ -24,7 +24,6 @@ int main() {
     point p;
     da_get_at(da, i, &p);
     printf("%d %d \n", p.x, p.y);
-
   }
 
   for (int i = 0; i < 10; i++) {
@@ -33,8 +32,6 @@ int main() {
   }
   size = da_get_size(da);
   printf("size = %zu \n", size);
-
-
 
   return 0;
 }
