@@ -120,11 +120,9 @@ void da_insert_at(dynamic_array *da, const void *element, size_t index) {
   }
 
   if (da->num_elements == da->capacity) {
-
     if (_da_resize(da) == -1) {
       return;
     }
-
 
     if (!(da->data)) {
       if (da->num_elements == 0) {
@@ -224,4 +222,11 @@ size_t da_get_size(dynamic_array *da) {
     return 0;
   }
   return da->num_elements;
+}
+void da_free(dynamic_array *da) {
+  if (!da) {
+    return;
+  }
+  free(da->data);
+  free(da);
 }
