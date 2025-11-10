@@ -30,9 +30,14 @@ implementation, however, has better spatial cache locality but requires
 homogeneous objects.
 */
 dynamic_array *da_build(size_t element_size) {
+  if (element_size == 0) {
+    fprintf(stderr, "Error : element_size cannot be 0\n");
+    return NULL;
+  }
+
   dynamic_array *da = malloc(sizeof(dynamic_array));
-  if (!da) {
-    fprintf(stderr, "Error : Dynamic array initialization failed \n");
+  if(!da){
+    fprintf(stderr, "Error : Dynamic array allocation failed\n");
     return NULL;
   }
   *da = (dynamic_array){
@@ -46,7 +51,7 @@ dynamic_array *da_build(size_t element_size) {
 
 // Internal function.
 // return 0 if success
-// return 1 if fail
+// return -1 if fail
 int _da_resize(dynamic_array *da) {
   // TODO:
   // Implement two separate functions:
@@ -55,7 +60,7 @@ int _da_resize(dynamic_array *da) {
 
   int growth_factor = 2;
   void *new_data;
-  size_t new_size = da->num_elements;
+  size_t new_size = da->capacity;
   if (new_size == 0) {
     new_size = 1;
     new_data = calloc(new_size, da->element_size);
@@ -70,8 +75,9 @@ int _da_resize(dynamic_array *da) {
     da->data = new_data;
     da->capacity = new_size;
   }
-  return 1;
+  return 0;
 }
+
 int da_get_at(const dynamic_array *da, size_t index, void *out_element) {
   // Returns 0 on success.
   // Returns -1 on failure.
@@ -123,26 +129,16 @@ void da_insert_at(dynamic_array *da, const void *element, size_t index) {
     if (_da_resize(da) == -1) {
       return;
     }
-
-    if (!(da->data)) {
-      if (da->num_elements == 0) {
-        fprintf(stderr, "Dynamic array data initialization failed\n");
-      } else {
-        fprintf(stderr, "Dynamic array resize failed while inserting\n");
-      }
-
-      return;
-    }
   }
 
   // Step 1:
   // `da[index+1:capacity+1] = da[index:capacity]`
   char *base_ptr = (char *)da->data;
-  char *desination_ptr = base_ptr + (index + 1) * (da->element_size);
+  char *destination_ptr = base_ptr + (index + 1) * (da->element_size);
   char *source_ptr = base_ptr + (index) * (da->element_size);
 
   size_t n_bytes = (da->num_elements - index) * (da->element_size);
-  memmove(desination_ptr, source_ptr, n_bytes);
+  memmove(destination_ptr, source_ptr, n_bytes);
 
   // Step 2:
   // `da[index] = element`
@@ -163,10 +159,10 @@ void da_delete_at(dynamic_array *da, size_t index) {
   // Step 2:
   // `da[index:capacity - 1] = da[index+1:capacity]`
   char *base_ptr = (char *)da->data;
-  char *desination_ptr = base_ptr + (index) * (da->element_size);
+  char *destination_ptr = base_ptr + (index) * (da->element_size);
   char *source_ptr = base_ptr + (index + 1) * (da->element_size);
   size_t n_bytes = (da->num_elements - index - 1) * (da->element_size);
-  memmove(desination_ptr, source_ptr, n_bytes);
+  memmove(destination_ptr, source_ptr, n_bytes);
 
   // Step 3:
   // Update `num_elements`.
@@ -188,16 +184,6 @@ void da_insert_last(dynamic_array *da, const void *element) {
   }
   if (da->num_elements == da->capacity) {
     if (_da_resize(da) == -1) {
-      return;
-    }
-
-    if (!(da->data)) {
-      if (da->num_elements == 0) {
-        fprintf(stderr, "Dynamic array data initialization failed\n");
-      } else {
-        fprintf(stderr, "Dynamic array resize failed while inserting\n");
-      }
-
       return;
     }
   }
