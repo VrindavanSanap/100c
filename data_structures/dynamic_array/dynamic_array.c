@@ -31,6 +31,10 @@ homogeneous objects.
 */
 dynamic_array *da_build(size_t element_size) {
   dynamic_array *da = malloc(sizeof(dynamic_array));
+  if (!da) {
+    fprintf(stderr, "Error : Dynamic array initialization failed \n");
+    return NULL;
+  }
   *da = (dynamic_array){
       .data = NULL,
       .num_elements = 0,
