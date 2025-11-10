@@ -36,7 +36,7 @@ dynamic_array *da_build(size_t element_size) {
   }
 
   dynamic_array *da = malloc(sizeof(dynamic_array));
-  if(!da){
+  if (!da) {
     fprintf(stderr, "Error : Dynamic array allocation failed\n");
     return NULL;
   }
