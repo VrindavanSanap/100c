@@ -45,7 +45,9 @@ dynamic_array *da_build(size_t element_size) {
 }
 
 // Internal function.
-void _da_resize(dynamic_array *da) {
+// return 0 if success
+// return 1 if fail
+int _da_resize(dynamic_array *da) {
   // TODO:
   // Implement two separate functions:
   // grow and shrink,
@@ -63,11 +65,12 @@ void _da_resize(dynamic_array *da) {
   }
   if (new_data == NULL) {
     fprintf(stderr, "Error : Dynamic array reallocation failed \n");
-    return;
+    return -1;
   } else {
     da->data = new_data;
     da->capacity = new_size;
   }
+  return 1;
 }
 int da_get_at(const dynamic_array *da, size_t index, void *out_element) {
   // Returns 0 on success.
@@ -117,7 +120,12 @@ void da_insert_at(dynamic_array *da, const void *element, size_t index) {
   }
 
   if (da->num_elements == da->capacity) {
-    _da_resize(da);
+
+    if (_da_resize(da) == -1) {
+      return;
+    }
+
+
     if (!(da->data)) {
       if (da->num_elements == 0) {
         fprintf(stderr, "Dynamic array data initialization failed\n");
@@ -181,7 +189,10 @@ void da_insert_last(dynamic_array *da, const void *element) {
     return;
   }
   if (da->num_elements == da->capacity) {
-    _da_resize(da);
+    if (_da_resize(da) == -1) {
+      return;
+    }
+
     if (!(da->data)) {
       if (da->num_elements == 0) {
         fprintf(stderr, "Dynamic array data initialization failed\n");
