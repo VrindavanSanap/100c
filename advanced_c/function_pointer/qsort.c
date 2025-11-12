@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <utils/utils.h>
 
-#include "print_arr.h"
 
 int compare_ints(const void* p, const void* q) {
   int num1 = *(const int*)p;

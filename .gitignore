@@ -17,3 +17,8 @@ Makefile
 *.so
 *.dylib
 *.xcodeproj/
+
+# CLion
+.idea/
+*.iml
+cmake-build-*
