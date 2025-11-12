@@ -1,2 +1,4 @@
 add_subdirectory(function_pointers)
 add_subdirectory(luts)
+add_subdirectory(bit_feilds)
+add_subdirectory(loonngg_number)

@@ -1,0 +1,1 @@
+add_executable(os_selecter os_selecter.c)
