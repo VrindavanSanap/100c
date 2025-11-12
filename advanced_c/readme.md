@@ -2,4 +2,6 @@ This folder contains code for the [Advaced c](https://www.youtube.com/watch?v=g7
 
 Aimed at increasing the depth of understanding of the c programing language.
 
-Arigatou
+Topics
+1. [Function pointers](./function_pointers/)
+

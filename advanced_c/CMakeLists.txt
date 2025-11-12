@@ -1,2 +1,2 @@
-add_subdirectory(function_pointer)
+add_subdirectory(function_pointers)
 add_subdirectory(luts)
