@@ -1,5 +1,6 @@
 {
     "files.associations": {
+        "*.embeddedhtml": "html",
         "dict.h": "c",
         "itos.h": "c",
         "sdl.h": "c",
@@ -8,7 +9,9 @@
         "vector": "c",
         "sum_arr.h": "c",
         "print_arr.h": "c",
-        "stdbool.h": "c"
+        "stdbool.h": "c",
+        "utils.h": "c",
+        "string.h": "c"
     },
     "cmake.ignoreCMakeListsMissing": true,
     "C_Cpp.clang_format_style": "file",
