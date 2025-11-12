@@ -4,4 +4,4 @@ Aimed at increasing the depth of understanding of the c programing language.
 
 Topics
 1. [Function pointers](./function_pointers/)
-
+1. [Void pointer](./void_pointer/)
