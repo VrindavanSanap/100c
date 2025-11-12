@@ -22,3 +22,7 @@ Makefile
 .idea/
 *.iml
 cmake-build-*
+
+# VS Code
+.vscode/
+*.code-workspace
