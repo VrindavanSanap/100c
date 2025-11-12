@@ -15,11 +15,6 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Install clang-format (lightweight)
-        run: |
-          sudo apt-get update
-          sudo apt-get install --no-install-recommends -y clang-format
-
       - name: Format source files
         run: |
           find . -type f \( -name '*.c' -o -name '*.cpp' -o -name '*.h' -o -name '*.hpp' \) \

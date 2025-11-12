@@ -17,12 +17,12 @@ target_include_directories(dynamic_array_lib
 )
 
 # 3. Define your demo executable
-add_executable(demo_app
+add_executable(demo_dynamic_array
     demo_dynamic_array.c
 )
 
 # 4. Link the demo app against your library
-target_link_libraries(demo_app
+target_link_libraries(demo_dynamic_array
     PRIVATE dynamic_array_lib
 )
 
