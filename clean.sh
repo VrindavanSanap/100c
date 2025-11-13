@@ -1,32 +1,24 @@
 #!/bin/bash
 
-echo "Directories:"
+echo "Starting cleanup..."
 
-list_exec() {
-	for file in *;
-  	do
- 			if file -b mach-o "$file" | grep -q "Mach-O 64-bit object arm64";
-		    then 
-				echo "$file is mach-o object file and needs to be yeeted" 
-				rm $file 
-			fi 
-			if file -b mach-o "$file" | grep -q "Mach-O 64-bit executable arm64";
-	  		then echo "$file is mach-o executable file and needs to be yeeted" rm $file
-			fi
-		done
-}
+# Find and delete all build directories
+echo "Removing build directories..."
+find . -type d -name "build" -print -exec rm -rf {} \;
 
-expand() {
-        list_exec
-	for directory in *;do
-		if [[ -d "$directory" && "$directory" != "build" ]];
-			then 
-				echo "Files: in $directory"
-				list_exec
-				cd "$directory" echo "going into $directory" 
-				expand 
-				cd ..
-		fi
-	done
-}
-expand
+# Find and delete common compiled file types
+echo "Removing compiled files (.o, .a, .out)..."
+find . -type f \( -name "*.o" -o -name "*.a" -o -name "*.out" \) -print -exec rm -f {} \;
+
+# Find and delete all compiled executables
+echo "Finding and removing executables..."
+find . -type f \( -perm -u+x -o -perm -g+x -o -perm -o+x \) -not -path "./.git/*" -not -name "*.sh" -not -name "*.py" -exec sh -c '
+    for file do
+        if file "$file" | grep -qE "Mach-O|ELF"; then
+            echo "Removing executable: $file"
+            rm "$file"
+        fi
+    done
+' sh {} \;
+
+echo "Cleanup complete."

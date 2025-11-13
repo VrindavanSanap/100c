@@ -6,9 +6,7 @@
 int main() {
   fork();
   fork();
-  fork();
   printf("hello\n");
   printf("pid = %d \n", getpid());
-  printf("ppid = %d \n", getppid());
   return 0;
 }
