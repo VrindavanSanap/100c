@@ -6,9 +6,12 @@
 *.o
 *.swp
 
-# CMake
+# Generic build directories
 build/
-*/build/
+**/build/
+**/Build/
+
+# CMake
 CMakeCache.txt
 CMakeFiles/
 cmake_install.cmake

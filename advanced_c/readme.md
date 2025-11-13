@@ -6,7 +6,7 @@ Topics
 1. [Function pointers](./function_pointers/)
 1. [Bit Flags](bit_flags/)
 1. [Void pointer]
-1. [Long number seperator](./loonngg_number/)
+1. [Long number seperator](loonng_number/)
 1. [sizeof]
 1. [Lookup tables]
 1. [Tagged unions]
