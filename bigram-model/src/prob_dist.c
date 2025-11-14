@@ -8,10 +8,9 @@
 
 //  Code will be used as boiler plate
 
-#include <stdio.h>
-
 #include <bigram-model/print_arr.h>
 #include <bigram-model/sum_arr.h>
+#include <stdio.h>
 
 void prob_dist(float* x, int size) {
   float sum = sum_float_l1(x, size);
