@@ -1,4 +1,4 @@
 add_subdirectory(function_pointers)
-add_subdirectory(luts)
 add_subdirectory(bit_flags)
 add_subdirectory(loonng_number)
+add_subdirectory(comma_operator)
