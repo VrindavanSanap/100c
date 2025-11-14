@@ -1,6 +1,3 @@
-cmake_minimum_required(VERSION 3.15)
-project(bigram-model LANGUAGES C)
-
 add_library(bigram_model_lib
     src/dict.c
     src/itos.c
