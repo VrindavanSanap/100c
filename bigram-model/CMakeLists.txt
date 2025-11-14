@@ -1,0 +1,29 @@
+cmake_minimum_required(VERSION 3.15)
+project(bigram-model LANGUAGES C)
+
+add_library(bigram_model_lib
+    src/dict.c
+    src/itos.c
+    src/line_count.c
+    src/mockup.c
+    src/plot_N.c
+    src/print_arr.c
+    src/print_bigrams.c
+    src/prob_dist.c
+    src/random.c
+    src/sample.c
+    src/stoi.c
+    src/sum_arr.c
+)
+target_include_directories(bigram_model_lib
+    PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+add_executable(bigram-model
+    app/bigram.c
+)
+
+target_link_libraries(bigram-model
+    PRIVATE
+        bigram_model_lib
+)

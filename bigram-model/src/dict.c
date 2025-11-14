@@ -1,5 +1,4 @@
-#include "dict.h"
-
+#include <bigram-model/dict.h>
 #include <stdio.h>
 #include <string.h>
 

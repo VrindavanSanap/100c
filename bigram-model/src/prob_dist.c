@@ -10,8 +10,8 @@
 
 #include <stdio.h>
 
-#include "print_arr.h"
-#include "sum_arr.h"
+#include <bigram-model/print_arr.h>
+#include <bigram-model/sum_arr.h>
 
 void prob_dist(float* x, int size) {
   float sum = sum_float_l1(x, size);

@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#include "itos.h"
+#include <bigram-model/itos.h>
 void plot_N(int N[27][27]) {
   for (int i = 0; i < 28; i++) {    // y coord
     for (int j = 0; j < 28; j++) {  // x coord

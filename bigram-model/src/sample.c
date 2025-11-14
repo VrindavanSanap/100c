@@ -1,4 +1,4 @@
-#include "random.h"
+#include <bigram-model/random.h>
 
 int sample(float* probabilities, int n) {
   // sample index from probabilities (they must sum to 1!)
