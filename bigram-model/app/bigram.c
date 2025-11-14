@@ -5,17 +5,21 @@
 #include <string.h>  // macOS prefers string.h
 #include <time.h>
 
-#include "../include/bigram-model/dict.h"
-#include "line_count.h"
-#include "plot_N.h"
-#include "prob_dist.h"
-#include "sample.h"
-#include "stoi.h"
+#include <bigram-model/dict.h>
+#include <bigram-model/itos.h>
+#include <bigram-model/line_count.h>
+#include <bigram-model/plot_N.h>
+#include <bigram-model/print_arr.h>
+#include <bigram-model/prob_dist.h>
+#include <bigram-model/random.h>
+#include <bigram-model/sample.h>
+#include <bigram-model/stoi.h>
+#include <bigram-model/sum_arr.h>
 
 #define MAX_STRING_LENGTH 100
 
-void min_max(const char words[][MAX_STRING_LENGTH], int n_words, int* min_ptr,
-             int* max_ptr) {
+void min_max(const char words[][MAX_STRING_LENGTH], int n_words, int *min_ptr,
+             int *max_ptr) {
   int max = 0;
   int min = 999;
   int length;

@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#include "dict.h"
+#include <bigram-model/dict.h>
 
 Dictionary stoi() {
   Dictionary dict;
