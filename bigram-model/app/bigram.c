@@ -5,7 +5,7 @@
 #include <string.h>  // macOS prefers string.h
 #include <time.h>
 
-#include "dict.h"
+#include "../include/bigram-model/dict.h"
 #include "line_count.h"
 #include "plot_N.h"
 #include "prob_dist.h"

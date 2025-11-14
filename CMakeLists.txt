@@ -46,3 +46,4 @@ project(100c VERSION 1.0 LANGUAGES C)
 
 add_subdirectory(utils)
 add_subdirectory(advanced_c)
+add_subdirectory(bigram-model)
