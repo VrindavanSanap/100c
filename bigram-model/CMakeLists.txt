@@ -20,6 +20,14 @@ add_executable(bigram-model
     app/bigram.c
 )
 
+add_custom_command(
+    TARGET bigram-model POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy
+    ${CMAKE_CURRENT_SOURCE_DIR}/names.txt
+    $<TARGET_FILE_DIR:bigram-model>/names.txt
+    COMMENT "Copying names.txt to build directory"
+)
+
 target_link_libraries(bigram-model
     PRIVATE
         bigram_model_lib
