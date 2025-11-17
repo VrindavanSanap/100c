@@ -17,8 +17,8 @@
 
 #define MAX_STRING_LENGTH 100
 
-void min_max(const char words[][MAX_STRING_LENGTH], int n_words, size_t* min_ptr,
-             size_t* max_ptr) {
+void min_max(const char words[][MAX_STRING_LENGTH], int n_words,
+             size_t* min_ptr, size_t* max_ptr) {
   size_t max = 0;
   size_t min = 999;
   size_t length;
