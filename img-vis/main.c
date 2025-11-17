@@ -92,7 +92,8 @@ void print_image(SDL_Surface *surface) {
 int main(int argc, char *argv[]) {
   signal(SIGINT, handle_sigint);
   if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-    fprintf(stderr, "SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
+    fprintf(stderr, "SDL could not initialize! SDL_Error: %s\n",
+            SDL_GetError());
     return 1;
   }
 
@@ -126,7 +127,7 @@ int main(int argc, char *argv[]) {
   fflush(stdout);
 
   while (true) {
-  usleep(100000);
+    usleep(100000);
     get_term_size(&curr_rows, &curr_cols);
     if (curr_rows != prev_rows || curr_cols != prev_cols) {
       get_term_size(&prev_rows, &prev_cols);
