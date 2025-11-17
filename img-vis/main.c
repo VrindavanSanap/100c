@@ -12,7 +12,7 @@ void handle_sigint(int sig) {
   exit(0);
 }
 
-void get_term_size(int* rows, int* cols) {
+void get_term_size(int *rows, int *cols) {
   // returns the number of rows and colums are there interminal
   struct winsize ws;
   if (ioctl(STDOUT_FILENO, TIOCGWINSZ, &ws) == -1) {
@@ -41,18 +41,17 @@ int get_term_height() {
   }
   return (int)ws.ws_row;
 }
-void print_image(SDL_Surface* surface) {
+void print_image(SDL_Surface *surface) {
   printf("\e[1;1H\e[2J");
   int img_height = surface->h;
   int img_width = surface->w;
 
-  SDL_Surface* rgb_surface =
+  SDL_Surface *rgb_surface =
       SDL_ConvertSurfaceFormat(surface, SDL_PIXELFORMAT_RGBX8888, 0);
-  // SDL_FreeSurface(surface);
   float scale = 1;
   int new_height, new_width;
   float ratio = (float)img_width / (float)img_height;
-  char* density_map =
+  char *density_map =
       "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,^`'. ";
 
   if (((get_term_height() * ratio * 2) < get_term_width())) {
@@ -65,11 +64,11 @@ void print_image(SDL_Surface* surface) {
     new_height = new_height / 2;
   }
 
-  SDL_Surface* resized = SDL_CreateRGBSurfaceWithFormat(
+  SDL_Surface *resized = SDL_CreateRGBSurfaceWithFormat(
       0, new_width, new_height, rgb_surface->format->BitsPerPixel,
       rgb_surface->format->format);
   SDL_BlitScaled(rgb_surface, NULL, resized, NULL);
-  Uint32* pixels = resized->pixels;
+  Uint32 *pixels = resized->pixels;
 
   for (int i = 0; i < (new_width * new_height); i++) {
     uint8_t r, g, b;
@@ -88,16 +87,12 @@ void print_image(SDL_Surface* surface) {
     }
   }
   SDL_FreeSurface(resized);
+  SDL_FreeSurface(rgb_surface);
 }
-int main(int argc, char* argv[]) {
+int main(int argc, char *argv[]) {
   signal(SIGINT, handle_sigint);
-
   if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-    printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
-    return 1;
-  }
-  if (SDL_Init(SDL_INIT_VIDEO) != 0) {
-    printf("SDL_Init Error: %s\n", SDL_GetError());
+    fprintf(stderr, "SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
     return 1;
   }
 
@@ -106,9 +101,15 @@ int main(int argc, char* argv[]) {
     SDL_Quit();
     return 1;
   }
-  char* img_loc = "./images/flower.png";
+  char *img_loc;
+  if (argc > 1) {
+    img_loc = argv[1];
+  } else {
+    img_loc =
+        "./images/flower.png";  // Default image if no argument is provided
+  }
 
-  SDL_Surface* surface = IMG_Load(img_loc);
+  SDL_Surface *surface = IMG_Load(img_loc);
   if (!surface) {
     printf("Failed to load image: %s\n", IMG_GetError());
     IMG_Quit();
@@ -125,6 +126,7 @@ int main(int argc, char* argv[]) {
   fflush(stdout);
 
   while (true) {
+  usleep(100000);
     get_term_size(&curr_rows, &curr_cols);
     if (curr_rows != prev_rows || curr_cols != prev_cols) {
       get_term_size(&prev_rows, &prev_cols);
@@ -135,6 +137,6 @@ int main(int argc, char* argv[]) {
     }
   }
 
-  // SDL_Quit();
+  SDL_Quit();
   return 0;
 }
