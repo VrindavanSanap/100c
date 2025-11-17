@@ -2,10 +2,7 @@ add_library(bigram_model_lib
     src/dict.c
     src/itos.c
     src/line_count.c
-    src/mockup.c
     src/plot_N.c
-    src/print_arr.c
-    src/print_bigrams.c
     src/prob_dist.c
     src/random.c
     src/sample.c
@@ -19,7 +16,6 @@ target_include_directories(bigram_model_lib
 add_executable(bigram-model
     app/bigram.c
 )
-
 add_custom_command(
     TARGET bigram-model POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy
@@ -31,4 +27,5 @@ add_custom_command(
 target_link_libraries(bigram-model
     PRIVATE
         bigram_model_lib
+        # utils_lib
 )
