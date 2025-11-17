@@ -29,3 +29,5 @@ cmake-build-*
 # VS Code
 .vscode/
 *.code-workspace
+
+xcode-build/
