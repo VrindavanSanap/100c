@@ -17,11 +17,11 @@
 
 #define MAX_STRING_LENGTH 100
 
-void min_max(const char words[][MAX_STRING_LENGTH], int n_words, int* min_ptr,
-             int* max_ptr) {
-  int max = 0;
-  int min = 999;
-  int length;
+void min_max(const char words[][MAX_STRING_LENGTH], int n_words, size_t* min_ptr,
+             size_t* max_ptr) {
+  size_t max = 0;
+  size_t min = 999;
+  size_t length;
   for (int i = 0; i < n_words; i++) {
     length = strlen(words[i]);
     if (max < length) {
@@ -38,7 +38,7 @@ void min_max(const char words[][MAX_STRING_LENGTH], int n_words, int* min_ptr,
 void read_strings(FILE* file, char strings[][MAX_STRING_LENGTH], int n_words) {
   int i = 0;
   while (i < n_words && fgets(strings[i], MAX_STRING_LENGTH, file)) {
-    int length = strlen(strings[i]);
+    size_t length = strlen(strings[i]);
     if (length > 0 && strings[i][length - 1] == '\n') {
       strings[i][length - 1] = '\0';
     }
@@ -47,7 +47,7 @@ void read_strings(FILE* file, char strings[][MAX_STRING_LENGTH], int n_words) {
 }
 
 int main(int argc, char* argv[]) {
-  srand(time(NULL));
+  srand((unsigned int)time(NULL));
   char* file_name = "./names.txt";
   if (argc == 2) {
     file_name = argv[1];
@@ -66,9 +66,9 @@ int main(int argc, char* argv[]) {
   read_strings(file, words, n_words);
   fclose(file);
 
-  int min, max;
+  size_t min, max;
   min_max(words, n_words, &min, &max);
-  printf("min_l = %d \nmax_l = %d \n\n", min, max);
+  printf("min_l = %zu \nmax_l = %zu \n\n", min, max);
 
   // Calculate bigram frequency matrix
   Dictionary dict = stoi();
