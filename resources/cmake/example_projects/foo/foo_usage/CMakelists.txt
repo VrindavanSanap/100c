@@ -1,0 +1,11 @@
+add_executable(foo_usage)
+
+target_sources(foo_usage
+  PRIVATE 
+    main.cpp
+)
+
+target_link_libraries(foo_usage
+  PRIVATE
+    foo
+)
