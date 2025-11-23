@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int line_count(FILE* file) {
+int line_count(FILE *file) {
   long start_pos = ftell(file);
   char ch;
   int line_count = 0;

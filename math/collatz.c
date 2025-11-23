@@ -22,7 +22,7 @@ void collatz(int n) {
   } while (n != 1);
 }
 
-int main(int argc, char* argv[]) {
+int main(int argc, char *argv[]) {
   if (argc != 2) {
     printf("usage: collatz n");
     return 0;

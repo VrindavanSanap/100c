@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void matmul(float* xout, float* x, float* w, int n, int d) {
+void matmul(float *xout, float *x, float *w, int n, int d) {
   // W (d,n) @ x (n,) -> xout (d,)
   // by far the most amount of time is spent inside this little function
   int i;

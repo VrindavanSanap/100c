@@ -48,19 +48,19 @@
 
 #include "cJSON.h"
 
-char* create_monitor(void) {
+char *create_monitor(void) {
   const unsigned int resolution_numbers[3][2] = {
       {1280, 720}, {1920, 1080}, {3840, 2160}};
-  char* string = NULL;
-  cJSON* name = NULL;
-  cJSON* resolutions = NULL;
-  cJSON* resolution = NULL;
-  cJSON* width = NULL;
-  cJSON* height = NULL;
+  char *string = NULL;
+  cJSON *name = NULL;
+  cJSON *resolutions = NULL;
+  cJSON *resolution = NULL;
+  cJSON *width = NULL;
+  cJSON *height = NULL;
   size_t index = 0;
 
   // Create empty json object
-  cJSON* monitor = cJSON_CreateObject();
+  cJSON *monitor = cJSON_CreateObject();
   if (monitor == NULL) {
     goto end;
   }
@@ -108,9 +108,9 @@ end:
   return string;
 }
 int main() {
-  FILE* file;
+  FILE *file;
 
-  char* monitor_string = create_monitor();
+  char *monitor_string = create_monitor();
   file = fopen("monitor.json", "w");
   fprintf(file, "%s\n", monitor_string);
   printf("%s", monitor_string);

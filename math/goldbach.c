@@ -17,7 +17,7 @@ void goldbach(const int n) {
   }
 }
 
-int main(int argc, char* argv[]) {
+int main(int argc, char *argv[]) {
   if (argc != 2) {
     printf("usage: goldbach n");
     return -1;
