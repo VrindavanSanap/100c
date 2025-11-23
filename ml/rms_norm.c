@@ -10,8 +10,8 @@
 #include <math.h>
 #include <stdio.h>
 
-#include "print_arr.h"
-#include "sum_arr.h"
+#include "utils/utils.h"
+#include "bigram-model/sum_arr.h"
 
 void rmsnorm(float* o, float* x, float* weight, int size) {
   float ss = 0.0f;
