@@ -2,10 +2,6 @@
 
 echo "Starting cleanup..."
 
-# Find and delete IDE build directories (VSCode, CLion, etc.)
-echo "Removing build directories..."
-find . -depth -type d \( -name "build" -o -name "build-*" -o -name "cmake-build-*" \) -print -exec rm -rf {} \;
-
 # Find and delete common compiled file types
 echo "Removing compiled files (.o, .a, .out)..."
 find . -type f \( -name "*.o" -o -name "*.a" -o -name "*.out" \) -print -exec rm -f {} \;
