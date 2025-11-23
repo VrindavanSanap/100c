@@ -115,18 +115,31 @@ int main() {
     bool proper_ans = false;
     char ui;
     int v = 0;
+    char line[256];
     while (!proper_ans) {
-      scanf(" %c", &ui);
-      while (getchar() != '\n');
-      ui = tolower(ui);
+      if (fgets(line, sizeof(line), stdin) == NULL) {
+        printf("\nEOF detected. Quitting.\n");
+        exit(0);
+      }
+
+      // Skip empty lines or lines with only whitespace
+      int k = 0;
+      while (line[k] != '\0' && isspace(line[k])) {
+        k++;
+      }
+      if (line[k] == '\0') {
+        continue;
+      }
+
+      ui = tolower(line[k]);
       v = ui - 'a';
       if (v >= 0 && v < 4) {
         proper_ans = true;
-      } else if (v == 16) {
+      } else if (ui == 'q') {
         printf("Your pressed Q so quiting.\n");
         exit(0);
       } else {
-        printf("Please enter choice correctly \n");
+        printf("Please enter choice correctly (A, B, C, D or Q)\n");
       }
     }
     printf("You choose %c \n", toupper(ui));
