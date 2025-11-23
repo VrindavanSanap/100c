@@ -1,2 +1,3 @@
-find . -type f -name "*.cpp" -o -name "*.h" -name "*.c" -exec clang-format -i {} \;
+find . -type f \( -name '*.c' -o -name '*.cpp' -o -name '*.h' -o -name '*.hpp' \) \
+          -exec clang-format -i -style=file {} +
 

@@ -17,8 +17,8 @@ char map_value_to_char(int value) {
   return charset[index];
 }
 
-void read_and_print_uint32(FILE* file, uint32_t* value,
-                           const char* error_message, const char* label) {
+void read_and_print_uint32(FILE *file, uint32_t *value,
+                           const char *error_message, const char *label) {
   size_t result = fread(value, sizeof(*value), 1, file);
   *value = __builtin_bswap32(*value);
   if (result != 1) {
@@ -29,7 +29,7 @@ void read_and_print_uint32(FILE* file, uint32_t* value,
   printf("%s: %u\n", label, *value);
 }
 
-void visualize_number(FILE* file, int index) {
+void visualize_number(FILE *file, int index) {
   int base_pose = 16;
 
   fseek(file, base_pose + (index * 784), SEEK_SET);
@@ -48,7 +48,7 @@ void visualize_number(FILE* file, int index) {
     printf("\n");
   }
 }
-int get_label(FILE* file, int index) {
+int get_label(FILE *file, int index) {
   int base_pose = 8;
 
   fseek(file, base_pose + (index - 1), SEEK_SET);
@@ -63,18 +63,18 @@ int get_label(FILE* file, int index) {
   return (int)pixel;
 }
 
-char* train_image_file_name = "train-images-idx3-ubyte";
-char* train_label_file_name = "train-labels-idx1-ubyte";
+char *train_image_file_name = "train-images-idx3-ubyte";
+char *train_label_file_name = "train-labels-idx1-ubyte";
 // Smaller
-char* test_image_file_name = "t10k-images-idx3-ubyte";
-char* test_label_file_name = "t10k-labels-idx1-ubyte";
+char *test_image_file_name = "t10k-images-idx3-ubyte";
+char *test_label_file_name = "t10k-labels-idx1-ubyte";
 
-FILE* train_image_file;
-FILE* train_label_file;
-FILE* test_image_file;
-FILE* test_label_file;
-FILE* image_file;
-FILE* label_file;
+FILE *train_image_file;
+FILE *train_label_file;
+FILE *test_image_file;
+FILE *test_label_file;
+FILE *image_file;
+FILE *label_file;
 
 uint32_t magic_number;
 uint32_t num_items;

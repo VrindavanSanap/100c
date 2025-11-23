@@ -13,7 +13,7 @@
 #include "bigram-model/sum_arr.h"
 #include "utils/utils.h"
 
-void rmsnorm(float* o, float* x, float* weight, int size) {
+void rmsnorm(float *o, float *x, float *weight, int size) {
   float ss = 0.0f;
   for (int j = 0; j < size; j++) {
     ss += x[j] * x[j];
@@ -25,7 +25,7 @@ void rmsnorm(float* o, float* x, float* weight, int size) {
     o[j] = weight[j] * (ss * x[j]);
   }
 }
-int main(int argc, char* argv[]) {
+int main(int argc, char *argv[]) {
   float o[5];
   float w[5] = {1, 1, 1, 1, 1};
   float x[5] = {111, 2.7, 3.2, 4.0, 5.9};

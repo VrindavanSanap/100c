@@ -18,7 +18,7 @@
 #define MAX_STRING_LENGTH 100
 
 void min_max(const char words[][MAX_STRING_LENGTH], int n_words,
-             size_t* min_ptr, size_t* max_ptr) {
+             size_t *min_ptr, size_t *max_ptr) {
   size_t max = 0;
   size_t min = 999;
   size_t length;
@@ -35,7 +35,7 @@ void min_max(const char words[][MAX_STRING_LENGTH], int n_words,
   *max_ptr = max;
 }
 
-void read_strings(FILE* file, char strings[][MAX_STRING_LENGTH], int n_words) {
+void read_strings(FILE *file, char strings[][MAX_STRING_LENGTH], int n_words) {
   int i = 0;
   while (i < n_words && fgets(strings[i], MAX_STRING_LENGTH, file)) {
     size_t length = strlen(strings[i]);
@@ -46,14 +46,14 @@ void read_strings(FILE* file, char strings[][MAX_STRING_LENGTH], int n_words) {
   }
 }
 
-int main(int argc, char* argv[]) {
+int main(int argc, char *argv[]) {
   srand((unsigned int)time(NULL));
-  char* file_name = "./names.txt";
+  char *file_name = "./names.txt";
   if (argc == 2) {
     file_name = argv[1];
   }
 
-  FILE* file = fopen(file_name, "r");
+  FILE *file = fopen(file_name, "r");
   if (file == NULL) {
     perror("Error opening file");
     return 1;

@@ -13,8 +13,8 @@ typedef struct {
   int size;
 } Dictionary;
 
-void init_dict(Dictionary* dict);
-void insert_key_value_pair(Dictionary* dict, const char* key, int value);
-int get_value_by_key(const Dictionary* dict, const char* key);
-void print_all(Dictionary* dict);
+void init_dict(Dictionary *dict);
+void insert_key_value_pair(Dictionary *dict, const char *key, int value);
+int get_value_by_key(const Dictionary *dict, const char *key);
+void print_all(Dictionary *dict);
 #endif

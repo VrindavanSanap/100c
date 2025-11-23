@@ -7,14 +7,14 @@
 
 #include "cJSON.h"
 
-void swap(int* a, int* b) {
+void swap(int *a, int *b) {
   int temp = *a;
   *a = *b;
   *b = temp;
 }
 
-int* rand_permut() {
-  int* array = (int*)malloc(4 * sizeof(int));
+int *rand_permut() {
+  int *array = (int *)malloc(4 * sizeof(int));
   if (array == NULL) {
     fprintf(stderr, "Memory allocation failed\n");
     exit(1);
@@ -36,17 +36,17 @@ int* rand_permut() {
 
 #define CHUNK_SIZE 1024
 int main() {
-  FILE* fp = fopen("test.json", "r");
+  FILE *fp = fopen("test.json", "r");
   if (fp == NULL) {
     printf("Failed to open JSON file. \n");
     return 1;
   }
   char buffer[CHUNK_SIZE];
-  char* file_contents = NULL;
+  char *file_contents = NULL;
   size_t content_size = 0;
   size_t bytes_read;
   while ((bytes_read = fread(buffer, 1, sizeof(buffer), fp)) > 0) {
-    char* old_contents = file_contents;
+    char *old_contents = file_contents;
     file_contents = realloc(file_contents, content_size + bytes_read + 1);
     if (file_contents == NULL) {
       fprintf(stderr, "Memory allocation failed!! \n");
@@ -59,8 +59,8 @@ int main() {
     file_contents[content_size] = '\0';
   }
 
-  cJSON* root = cJSON_Parse(file_contents);
-  char* welcome_str =
+  cJSON *root = cJSON_Parse(file_contents);
+  char *welcome_str =
       "Welome to Medi-Quiz!!, You will be asked 10 single "
       "correct mcq questions and will be given score out of 10 "
       "in the end. \n \n Press Q to quit ******** \n \n";
@@ -71,26 +71,26 @@ int main() {
   for (int i = 0; i < total_questions; i++) {
     int qn = rand() % (1000);
 
-    cJSON* question_obj = cJSON_GetArrayItem(root, qn);
-    char* question =
+    cJSON *question_obj = cJSON_GetArrayItem(root, qn);
+    char *question =
         cJSON_GetObjectItemCaseSensitive(question_obj, "question")->valuestring;
-    char* distractor1 =
+    char *distractor1 =
         cJSON_GetObjectItemCaseSensitive(question_obj, "distractor1")
             ->valuestring;
-    char* distractor2 =
+    char *distractor2 =
         cJSON_GetObjectItemCaseSensitive(question_obj, "distractor2")
             ->valuestring;
-    char* distractor3 =
+    char *distractor3 =
         cJSON_GetObjectItemCaseSensitive(question_obj, "distractor3")
             ->valuestring;
-    char* correct_answer =
+    char *correct_answer =
         cJSON_GetObjectItemCaseSensitive(question_obj, "correct_answer")
             ->valuestring;
-    char* support =
+    char *support =
         cJSON_GetObjectItemCaseSensitive(question_obj, "support")->valuestring;
 
     printf("Q-%d) %s \n", i + 1, question);
-    int* permutation = rand_permut();
+    int *permutation = rand_permut();
     int correct_opt = 0;
     char option[5] = {'A', 'B', 'C', 'D', '\0'};
 

@@ -4,7 +4,7 @@
 // Define rand_float() function here or include the appropriate header if it's
 // from a library
 float rand_float() { return (float)rand(); }
-void softmax(float* x, int size) {
+void softmax(float *x, int size) {
   float max_val = x[0];
   for (int i = 1; i < size; i++) {
     if (x[i] > max_val) {

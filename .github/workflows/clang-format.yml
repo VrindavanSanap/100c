@@ -18,7 +18,7 @@ jobs:
       - name: Format source files
         run: |
           find . -type f \( -name '*.c' -o -name '*.cpp' -o -name '*.h' -o -name '*.hpp' \) \
-            -exec clang-format -i {} +
+            -exec clang-format -i -style=file {} +
 
       - name: Commit and push changes
         run: |

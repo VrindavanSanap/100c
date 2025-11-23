@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-float dot(float* a, float* b, int size) {
+float dot(float *a, float *b, int size) {
   float c = 0;
   for (int i = 0; i < size; i++) {
     c += a[i] * b[i];
