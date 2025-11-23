@@ -1,0 +1,6 @@
+add_executable(dot_prod dot_prod.c)
+add_executable(mat_vec_mul mat_vec_mul.c)
+add_executable(rms_norm rms_norm.c)
+target_link_libraries(rms_norm PRIVATE utils_lib bigram_model_lib)
+add_executable(sample sample.c)
+add_executable(softmax softmax.c)
