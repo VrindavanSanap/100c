@@ -46,7 +46,7 @@ This is a common case\! Imagine you have an internal helper function or struct d
 In this case, you **do not** put it in `include/`. You keep it inside `src/`:
 
 ```
-bigram-model/
+bigram_model/
 ├── include/
 │   └── bigram/
 │       ├── dict.h   # <-- Public API

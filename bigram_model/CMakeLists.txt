@@ -13,18 +13,18 @@ target_include_directories(bigram_model_lib
     PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
-add_executable(bigram-model
+add_executable(bigram_model
     app/bigram.c
 )
 add_custom_command(
-    TARGET bigram-model POST_BUILD
+    TARGET bigram_model POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy
     ${CMAKE_CURRENT_SOURCE_DIR}/names.txt
-    $<TARGET_FILE_DIR:bigram-model>/names.txt
+    $<TARGET_FILE_DIR:bigram_model>/names.txt
     COMMENT "Copying names.txt to build directory"
 )
 
-target_link_libraries(bigram-model
+target_link_libraries(bigram_model
     PRIVATE
         bigram_model_lib
 )

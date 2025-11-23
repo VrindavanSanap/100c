@@ -1,4 +1,4 @@
-#include <bigram-model/itos.h>
+#include <bigram_model/itos.h>
 #include <stdio.h>
 void plot_N(int N[27][27]) {
   for (int i = 0; i < 28; i++) {    // y coord

@@ -1,4 +1,4 @@
-#include <bigram-model/dict.h>
+#include <bigram_model/dict.h>
 #include <stdio.h>
 
 Dictionary stoi() {
