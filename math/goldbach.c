@@ -3,7 +3,7 @@
 
 #include "primes.h"
 
-void goldbach(int n) {
+void goldbach(const int n) {
   int i = 0;
   int p = 0;
   while (1) {
@@ -22,7 +22,7 @@ int main(int argc, char* argv[]) {
     printf("usage: goldbach n");
     return -1;
   }
-  int n = atoi(argv[1]);
+  const int n = atoi(argv[1]);
   goldbach(n);
 
   return 0;
