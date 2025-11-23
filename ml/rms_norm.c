@@ -10,7 +10,7 @@
 #include <math.h>
 #include <stdio.h>
 
-#include "bigram-model/sum_arr.h"
+#include "bigram_model/sum_arr.h"
 #include "utils/utils.h"
 
 void rmsnorm(float *o, float *x, float *weight, int size) {
