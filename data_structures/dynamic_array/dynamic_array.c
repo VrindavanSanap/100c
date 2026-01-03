@@ -113,11 +113,11 @@ int da_set_at(dynamic_array *da, const void *element, size_t index) {
   return 0;
 }
 
-void da_insert_at(dynamic_array *da, const void *element, size_t index) {
+int da_insert_at(dynamic_array *da, const void *element, size_t index) {
   // Input validation.
   if (!da || !element) {
     fprintf(stderr, "Invalid parameters passed\n");
-    return;
+    return -1;
   }
   // Index clamping.
   // Like Python lists, if index > size, then index = size.
@@ -127,7 +127,7 @@ void da_insert_at(dynamic_array *da, const void *element, size_t index) {
 
   if (da->num_elements == da->capacity) {
     if (_da_resize(da) == -1) {
-      return;
+      return -1;
     }
   }
 
@@ -146,6 +146,7 @@ void da_insert_at(dynamic_array *da, const void *element, size_t index) {
   // Step 3:
   // Update `num_elements`.
   da->num_elements++;
+  return 0;
 }
 void da_delete_at(dynamic_array *da, size_t index) {
   // Input validation.
@@ -171,20 +172,20 @@ void da_delete_at(dynamic_array *da, size_t index) {
   // `_da_resize(da)`
 }
 
-void da_insert_first(dynamic_array *da, const void *element) {
-  da_insert_at(da, element, 0);
+int da_insert_first(dynamic_array *da, const void *element) {
+  return da_insert_at(da, element, 0);
 }
 void da_delete_first(dynamic_array *da) { da_delete_at(da, 0); }
 
-void da_insert_last(dynamic_array *da, const void *element) {
+int da_insert_last(dynamic_array *da, const void *element) {
   // Takes O(1) amortized time.
   if (!da || !element) {
     fprintf(stderr, "Invalid parameters passed\n");
-    return;
+    return -1;
   }
   if (da->num_elements == da->capacity) {
     if (_da_resize(da) == -1) {
-      return;
+      return -1;
     }
   }
 
@@ -193,6 +194,7 @@ void da_insert_last(dynamic_array *da, const void *element) {
   memcpy(destination_ptr, element, da->element_size);
 
   da->num_elements++;
+  return 0;
 }
 void da_delete_last(dynamic_array *da) {
   // Takes O(1) amortized time.
