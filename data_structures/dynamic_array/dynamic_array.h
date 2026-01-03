@@ -49,7 +49,7 @@ int da_set_at(dynamic_array *da, const void *element, size_t index);
 // Takes O(n) time
 // Shifts all other elements to the right by one index, and then inserts the
 // given element at the first index.
-void da_insert_first(dynamic_array *da, const void *element);
+int da_insert_first(dynamic_array *da, const void *element);
 // Deletes the first element of the array.
 // Takes O(n) time
 // Removes the first element and shifts all other elements to the left by one
@@ -59,7 +59,7 @@ void da_delete_first(dynamic_array *da);
 // Inserts an element at the given index.
 // Moves all elements starting from the given index to the right by one index,
 // then inserts at the given index. Takes O(n) time.
-void da_insert_at(dynamic_array *da, const void *element, size_t index);
+int da_insert_at(dynamic_array *da, const void *element, size_t index);
 // Deletes an element at the given index.
 // Moves all elements starting from index + 1 to the left by one index.
 // Takes O(n) time.
@@ -67,7 +67,7 @@ void da_delete_at(dynamic_array *da, size_t index);
 
 // Inserts an element at the end of the array.
 // Takes O(1) amortized time.
-void da_insert_last(dynamic_array *da, const void *element);
+int da_insert_last(dynamic_array *da, const void *element);
 // Deletes the last element of the array.
 // Takes O(1) amortized time.
 void da_delete_last(dynamic_array *da);
