@@ -27,4 +27,5 @@ add_custom_command(
 target_link_libraries(bigram_model
     PRIVATE
         bigram_model_lib
+        m
 )

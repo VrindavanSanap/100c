@@ -1,7 +1,12 @@
 
 add_executable(collatz_recursive collatz_recursive.c)
+
 add_executable(inv_sqrt inv_sqrt.c)
+target_link_libraries(inv_sqrt PRIVATE m)
+
 add_executable(newtons_method newtons_method.c)
+target_link_libraries(newtons_method PRIVATE m)
+
 add_executable(collatz collatz.c)
 
 add_executable(goldbach goldbach.c primes.c)
