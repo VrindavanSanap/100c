@@ -10,10 +10,11 @@ typedef struct {
 } TestCase;
 
 int main() {
-  TestCase tests[] = {{"", 0x811c9dc5},
-                      {"a", 0xe40c292c},
-                      {"abc", 0x1a47e90b},
-                      {"foobar", 0xbf9cf968},
+  TestCase tests[] = {
+      {"", 0x811c9dc5},
+      {"a", 0xe40c292c},
+      {"abc", 0x1a47e90b},
+      {"foobar", 0xbf9cf968},
   };
 
   int num_tests = sizeof(tests) / sizeof(tests[0]);
