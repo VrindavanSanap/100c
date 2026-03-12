@@ -31,3 +31,5 @@ cmake-build-*
 *.code-workspace
 
 xcode-build/
+
+.cache
