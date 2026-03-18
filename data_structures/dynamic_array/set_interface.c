@@ -57,14 +57,14 @@ bool set_find(set *s, void *element) {
   }
   return false;
 }
-void set_delete(set*s, void *element){
+void set_delete(set *s, void *element) {
   if (!s || !element) return;
   size_t element_size = da_get_element_size(s->elements);
   for (size_t i = 0; i < da_get_size(s->elements); i++) {
     char temp_buffer[element_size];
     da_get_at(s->elements, i, temp_buffer);
     if (s->compare(temp_buffer, element) == 0) {
-      da_remove_at(s->elements, i);   
+      da_remove_at(s->elements, i);
       return;
     }
   }
