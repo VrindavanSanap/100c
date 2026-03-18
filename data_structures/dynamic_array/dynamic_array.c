@@ -178,23 +178,7 @@ int da_insert_first(dynamic_array *da, const void *element) {
 void da_delete_first(dynamic_array *da) { da_delete_at(da, 0); }
 
 int da_insert_last(dynamic_array *da, const void *element) {
-  // Takes O(1) amortized time.
-  if (!da || !element) {
-    fprintf(stderr, "Invalid parameters passed\n");
-    return -1;
-  }
-  if (da->num_elements == da->capacity) {
-    if (_da_resize(da) == -1) {
-      return -1;
-    }
-  }
-
-  char *base_ptr = (char *)da->data;
-  char *destination_ptr = base_ptr + (da->num_elements) * (da->element_size);
-  memcpy(destination_ptr, element, da->element_size);
-
-  da->num_elements++;
-  return 0;
+  return da_insert_at(da, element, da->num_elements);
 }
 void da_delete_last(dynamic_array *da) {
   // Takes O(1) amortized time.

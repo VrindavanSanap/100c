@@ -47,8 +47,8 @@ void set_insert(set *s, void *element) {
 bool set_find(set *s, void *element) {
   // returns true if the element exists in the set
   size_t element_size = get_element_size(s->elements);
-  size_t num_elements =
-      da_get_size(s->elements) : for (size_t i = 0; i < num_elements; i++) {
+  size_t num_elements = da_get_size(s->elements);
+  for (size_t i = 0; i < num_elements; i++) {
     char temp_buffer[element_size];
     da_get_at(s->elements, i, temp_buffer);
     if (s->compare(temp_buffer, element) == 0) {
