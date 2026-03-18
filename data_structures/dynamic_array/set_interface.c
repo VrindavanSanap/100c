@@ -1,17 +1,58 @@
 #include "set_interface.h"
 
 #include <stdio.h>
-
-#include "../dynamic_array.h"
-
+#include <stdlib.h>
+#include <stdbool.h> 
+#include "dynamic_array.h"
 struct set {
-  void *data;
-  size_t num_elements;
-  size_t element_size;
+  dynamic_array *elements;
+  int (*compare)(const void *a, const void *b);
 };
 
-set *set_build(dynamic_array *da) {
-  for (size_t i = 0; i < da_get_size(da); i++) {
+set *set_build(size_t element_size,
+               int (*compare)(const void *a, const void *b)) {
+  if (element_size == 0) {
+    fprintf(stderr, "Error : element_size cannot be 0\n");
+    return NULL;
   }
+  if (!compare) {
+    fprintf(stderr, "Error: compare function cannot be NULL\n");
+    return NULL;
+  }
+  set *s = malloc(sizeof(*s));
+  if (!s) {
+    fprintf(stderr, "Error: Set allocation failed\n");
+    return NULL;
+  }
+  dynamic_array *elements = da_build(element_size);
+  if (!elements) {
+    fprintf(stderr, "Error: Set elements array allocation failed\n");
+    free(s);  // Prevent memory leak!
+    return NULL;
+  }
+
+  *s = (set){.elements = elements, .compare = compare};
+
+  return s;
 }
-bool set_find(set *s, void *element) {}
+void set_insert(set *s, void *element) {
+  if (!s || !element) return;
+  // insert only if the set does not already have the element
+  if (set_find(s, element)) {
+    return;
+  }
+  da_insert_last(s->elements, element);
+}
+bool set_find(set *s, void *element) {
+  // returns true if the element exists in the set
+  size_t element_size = get_element_size(s->elements);
+  size_t num_elements = da_get_size(s->elements):
+  for (size_t i = 0; i < num_elements;i++) {
+    char temp_buffer[element_size];
+    da_get_at(s->elements, i, temp_buffer);
+    if (s->compare(temp_buffer, element) == 0) {
+      return true;
+    }
+  }
+  return false;
+}
