@@ -52,7 +52,7 @@ dynamic_array *da_build(size_t element_size) {
 // Internal function.
 // return 0 if success
 // return -1 if fail
-int _da_resize(dynamic_array *da) {
+static int _da_resize(dynamic_array *da) {
   // TODO:
   // Implement two separate functions:
   // grow and shrink,
@@ -188,13 +188,15 @@ void da_delete_last(dynamic_array *da) {
   da->num_elements--;
 };
 
-size_t da_get_size(dynamic_array *da) {
+size_t da_get_size(const dynamic_array *da) {
   if (!da) {
     fprintf(stderr, "Invalid parameters passed\n");
     return 0;
   }
   return da->num_elements;
 }
+size_t get_element_size(const dynamic_array *da) { return da->element_size; }
+
 void da_free(dynamic_array *da) {
   if (!da) {
     return;
@@ -202,4 +204,3 @@ void da_free(dynamic_array *da) {
   free(da->data);
   free(da);
 }
-size_t get_element_size(dynamic_array *da) { return da->element_size; }

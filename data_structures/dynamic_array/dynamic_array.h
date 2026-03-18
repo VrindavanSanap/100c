@@ -73,7 +73,7 @@ int da_insert_last(dynamic_array *da, const void *element);
 void da_delete_last(dynamic_array *da);
 
 // Gives the number of elements present in the array.
-size_t da_get_size(dynamic_array *da);
-size_t get_element_size(dynamic_array *da);
+size_t da_get_size(const dynamic_array *da);
+size_t get_element_size(const dynamic_array *da);
 void da_free(dynamic_array *da);
 #endif /* DYNAMIC_ARRAY_H */
