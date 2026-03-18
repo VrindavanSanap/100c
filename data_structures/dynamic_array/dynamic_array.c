@@ -218,6 +218,4 @@ void da_free(dynamic_array *da) {
   free(da->data);
   free(da);
 }
-size_t get_element_size(dynamic_array*da){
-  return da->element_size;
-}
+size_t get_element_size(dynamic_array *da) { return da->element_size; }

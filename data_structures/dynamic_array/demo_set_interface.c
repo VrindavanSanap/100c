@@ -1,9 +1,10 @@
 #include <stdio.h>
 /*
+#include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <assert.h>
+
 #include "set_interface.h" // Assuming this includes your set struct and
 declarations
 
