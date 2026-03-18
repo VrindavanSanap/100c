@@ -30,7 +30,8 @@ typedef struct set set;
     returns a positive value if a > b
     returns a negative value if a < b
 */
-set *set_build(size_t element_size, int (*compare)(const void *a, const void *b));
+set *set_build(size_t element_size,
+               int (*compare)(const void *a, const void *b));
 
 // Static
 bool set_find(set *s, void *key);
