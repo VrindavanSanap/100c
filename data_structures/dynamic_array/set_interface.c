@@ -36,7 +36,7 @@ set *set_build(size_t element_size,
 
   return s;
 }
-void set_insert(set *s, void *element) {
+void set_insert(set *s, const void *element) {
   if (!s || !element) return;
   // insert only if the set does not already have the element
   if (set_find(s, element)) {
@@ -44,7 +44,7 @@ void set_insert(set *s, void *element) {
   }
   da_insert_last(s->elements, element);
 }
-bool set_find(set *s, void *element) {
+bool set_find(set *s,const void *element) {
   // returns true if the element exists in the set
   size_t element_size = get_element_size(s->elements);
   size_t num_elements = da_get_size(s->elements);
@@ -57,7 +57,7 @@ bool set_find(set *s, void *element) {
   }
   return false;
 }
-void set_delete(set *s, void *element) {
+void set_delete(set *s,const void *element) {
   if (!s || !element) return;
   size_t element_size = get_element_size(s->elements);
   for (size_t i = 0; i < da_get_size(s->elements); i++) {
@@ -68,6 +68,9 @@ void set_delete(set *s, void *element) {
       return;
     }
   }
+}
+size_t set_get_size(set *s){
+  return da_get_size(s->elements);
 }
 void set_free(set *s) {
   if (!s) {

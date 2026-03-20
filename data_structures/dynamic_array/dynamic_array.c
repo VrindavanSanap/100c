@@ -6,7 +6,6 @@
 //
 #include "dynamic_array.h"
 
-#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -186,7 +185,7 @@ void da_delete_last(dynamic_array *da) {
     return;
   }
   da->num_elements--;
-};
+}
 
 size_t da_get_size(const dynamic_array *da) {
   if (!da) {
