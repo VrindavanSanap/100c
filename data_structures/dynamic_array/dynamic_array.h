@@ -76,4 +76,7 @@ void da_delete_last(dynamic_array *da);
 size_t da_get_size(const dynamic_array *da);
 size_t get_element_size(const dynamic_array *da);
 void da_free(dynamic_array *da);
+
+void da_sort(dynamic_array *da, int (*compare_fn)(const void *, const void *));
+
 #endif /* DYNAMIC_ARRAY_H */
