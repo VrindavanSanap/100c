@@ -34,17 +34,16 @@ set *set_build(size_t element_size,
                int (*compare)(const void *a, const void *b));
 
 // Static
-bool set_find(set *s,const void *element);
+bool set_find(set *s, const void *element);
 size_t set_get_size(set *s);
 
 // Dynamic
-void set_insert(set *s,const void *element);
-void set_delete(set *s,const void *element);
-
+void set_insert(set *s, const void *element);
+void set_delete(set *s, const void *element);
 
 // Order
 /*
-TODO 
+TODO
 void find_min(set *s, void *out_key);
 void find_max(set *s, void *out_key);
 void find_prev(set *s, void *in_key, void *out_key);
