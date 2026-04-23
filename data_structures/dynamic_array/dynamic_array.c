@@ -195,7 +195,6 @@ size_t da_get_size(const dynamic_array *da) {
   return da->num_elements;
 }
 
-
 void da_sort(dynamic_array *da, int (*compare_fn)(const void *, const void *)) {
   if (!da || !compare_fn) return;
 
