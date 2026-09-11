@@ -33,3 +33,15 @@ cmake-build-*
 xcode-build/
 
 .cache
+
+# macOS debug symbols
+*.dSYM/
+
+# clangd / compile databases
+compile_commands.json
+.clangd/
+
+# Misc
+*.swo
+*~
+*.log
