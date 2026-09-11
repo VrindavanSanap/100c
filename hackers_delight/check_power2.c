@@ -7,5 +7,5 @@ int main() {
       printf("%d is a power of 2\n", a);
     }
   }
-    return 0;
+  return 0;
 }
