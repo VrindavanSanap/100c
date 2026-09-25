@@ -25,7 +25,7 @@ void rmsnorm(float *o, float *x, float *weight, int size) {
     o[j] = weight[j] * (ss * x[j]);
   }
 }
-int main(int argc, char *argv[]) {
+int main() {
   float o[5];
   float w[5] = {1, 1, 1, 1, 1};
   float x[5] = {111, 2.7, 3.2, 4.0, 5.9};

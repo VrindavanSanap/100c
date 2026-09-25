@@ -4,8 +4,8 @@
 typedef int (*t_my_func)(int, int);
 int foo(int x, int y) { return x + y; }
 
-bool idenitity(int x) { return true; };
-bool even(int x) { return x % 2 == 0; };
+bool idenitity(int x) { return true; }
+bool even(int x) { return x % 2 == 0; }
 
 void print_if(int xs[10], bool (*predicate)(int)) {
   printf("[ ");

@@ -8,7 +8,7 @@
 #include <sys/ioctl.h>
 #include <unistd.h>
 void handle_sigint(int sig) {
-  printf("\nCaught SIGINT (Ctrl+C). Exiting gracefully.\n");
+  printf("\nCaught SIGINT %d Exiting gracefully.\n", sig);
   exit(0);
 }
 
@@ -42,13 +42,12 @@ int get_term_height() {
   return (int)ws.ws_row;
 }
 void print_image(SDL_Surface *surface) {
-  printf("\e[1;1H\e[2J");
+  printf("\x1b[1;1H\x1b[2J");
   int img_height = surface->h;
   int img_width = surface->w;
 
   SDL_Surface *rgb_surface =
       SDL_ConvertSurfaceFormat(surface, SDL_PIXELFORMAT_RGBX8888, 0);
-  float scale = 1;
   int new_height, new_width;
   float ratio = (float)img_width / (float)img_height;
   char *density_map =

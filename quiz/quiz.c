@@ -60,8 +60,8 @@ int main() {
 
   cJSON *root = cJSON_Parse(file_contents);
   char *welcome_str =
-      "Welome to Medi-Quiz!!, You will be asked 10 single "
-      "correct mcq questions and will be given score out of 10 "
+      "Welome to Medi-Quiz!!, You will be asked 5 single "
+      "correct mcq questions and will be given score out of 5 "
       "in the end. \n \n Press Q to quit ******** \n \n";
 
   printf("%s", welcome_str);
@@ -93,22 +93,22 @@ int main() {
     int correct_opt = 0;
     char option[5] = {'A', 'B', 'C', 'D', '\0'};
 
-    for (int i = 0; i < 4; i++) {
-      if (permutation[i] == 0) {
-        printf("%c) %s \n", option[i], correct_answer);
-        correct_opt = i;
+    for (int j = 0; j < 4; j++) {
+      if (permutation[j] == 0) {
+        printf("%c) %s \n", option[j], correct_answer);
+        correct_opt = j;
       }
 
-      if (permutation[i] == 1) {
-        printf("%c) %s \n", option[i], distractor1);
+      if (permutation[j] == 1) {
+        printf("%c) %s \n", option[j], distractor1);
       }
 
-      if (permutation[i] == 2) {
-        printf("%c) %s \n", option[i], distractor2);
+      if (permutation[j] == 2) {
+        printf("%c) %s \n", option[j], distractor2);
       }
 
-      if (permutation[i] == 3) {
-        printf("%c) %s \n", option[i], distractor3);
+      if (permutation[j] == 3) {
+        printf("%c) %s \n", option[j], distractor3);
       }
     }
     bool proper_ans = false;
