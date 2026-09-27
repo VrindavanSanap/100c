@@ -29,7 +29,7 @@ void bsort(void *arr, int num, int size,
            int (*compare_elm)(const void *, const void *)) {
   for (int i = 0; i < num; i++) {
     for (int j = 0; j < num - 1 - i; j++) {
-      char *elm_1 = (char*)arr + j * size;
+      char *elm_1 = (char *)arr + j * size;
       char *elm_2 = (char *)arr + (j + 1) * size;
       if (compare_elm(elm_1, elm_2) > 0) {
         swap(elm_1, elm_2, size);
