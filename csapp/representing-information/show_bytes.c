@@ -1,6 +1,5 @@
 #include <stdio.h>
 
-
 typedef unsigned char *byte_pointer;
 
 void show_unsigned_char_bits(unsigned char c){
